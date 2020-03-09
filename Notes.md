@@ -12,7 +12,7 @@
 - [React](./topics/react.md)
 
 ### Backend
-- [C#](./topcis/csharp.md)
+- [C#](./topics/csharp.md)
   
 ### Containerization
 
