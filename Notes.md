@@ -9,14 +9,13 @@ Important links:
 
 Docker commands:
 
-| Command                                    | Description                                                                             | Notes                                                                                                            |
-| ------------------------------------------ | :-------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------- |
-| docker system prune                        | Removes all stopped containers                                                          |                                                                                                                  |
-| docker logs `<container id>`               | Does not re-run the container, which just output logs from when a container was started |                                                                                                                  |
-| docker stop `<container id>`               | Gives the container 10 seconds to stop, before killing operation                        |
-| docker kill `<container id>`               | Kills container immediately                                                             |
-| docker exec -it `<container id> <command>` | Executes a command in a running container                                               | -it: Allows input text to the container, i allows you to gain stdin. <br /> -sh: Allows you to gain shell access |
-|                                            |
+| Command                                    | Description                                                                                                                                                        |
+| ------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| docker system prune                        | Removes all stopped containers                                                                                                                                     |  |
+| docker logs `<container id>`               | Does not re-run the container, which just output logs from when a container was started                                                                            |  |
+| docker stop `<container id>`               | Gives the container 10 seconds to stop, before killing operation                                                                                                   |
+| docker kill `<container id>`               | Kills container immediately                                                                                                                                        |
+| docker exec -it `<container id> <command>` | Executes a command in a running container<br />-it: Allows input text to the container, i allows you to gain stdin. <br />    -sh: Allows you to gain shell access |
 
 [Markdown Cheatsheet]: <https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>
 [DockerDocs]: <https://docs.docker.com/get-docker/>
