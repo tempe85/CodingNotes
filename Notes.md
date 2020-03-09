@@ -1,6 +1,7 @@
 # Markdown
 
-[Markdown Cheatsheet] - Markdown commands
+- [Markdown Cheatsheet] - Markdown commands
+- [Dillinger](https://dillinger.io/) - Allows you to preview a markdown file
 
 # Docker Notes
 
@@ -16,14 +17,30 @@ Docker commands:
 | docker stop `<container id>`               | Gives the container 10 seconds to stop, before killing operation                                                                                                   |
 | docker kill `<container id>`               | Kills container immediately                                                                                                                                        |
 | docker exec -it `<container id> <command>` | Executes a command in a running container<br />-it: Allows input text to the container, i allows you to gain stdin. <br />    -sh: Allows you to gain shell access |
+| docker ps --all                            | Shows all docker containers that exist on your system                                                                                                              |
+| docker ps                                  | Shows all currently running docker containers                                                                                                                      |
 
 [Markdown Cheatsheet]: <https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>
 [DockerDocs]: <https://docs.docker.com/get-docker/>
 
-# New Features!
+# Docker instructions
 
-  - Import a HTML file and watch it magically convert to Markdown
-  - Drag and drop images (requires your Dropbox account be linked)
+  - FROM `<command>`
+    - Starting point (base image, temp container) for the image you are creating, e.g. alpine
+  - RUN `<command>`
+    - Run a command on the base image. Sets up depedencies.
+  - CMD `<command>` 
+    - Setting primary command of the created container (what command it runs when container starts)
+```sh
+$ docker build .
+```
+* Takes a docker file, runs the commands (the three docker instructions listed previously) and generates an image out of it
+
+```sh
+$ docker build -t <name_of_docker_image_tag> .
+```
+* This tags the docker image, allowing you to refer to it by the tag name
+  
 
 
 You can also:
