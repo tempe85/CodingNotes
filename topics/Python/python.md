@@ -24,9 +24,23 @@ Format a string based on a dictionary:
 ```
 
 ### CSV FILES
+
 Links
- - [Offical CSV Docs](https://docs.python.org/3/library/csv.html)
+
+- [Offical CSV Docs](https://docs.python.org/3/library/csv.html)
 
 ```python
 with open("data.csv", "w+") as csvfile: #opening file and setting it equal to variable 'csvfile', w+ is the mode (read and write, overwrite existing file or create new one)
 ```
+
+### Python Virtual Environment
+
+- Using powershell on Windows
+  ```shell
+  virtualenv -p python name-of-environment
+  cd name-of-environment
+  ./Scripts/activate
+  pip freeze
+  ```
+
+* Note: Use ./Scripts/activate command to restart the virtual environment
