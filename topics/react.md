@@ -36,10 +36,16 @@ useEffect(() => {
 
 - Second argument is a dependency on when the first argument method will run. In this case, when a prop called 'userIngredients' changes, then this will run again.
 
-### HOC (Higher Order Components)
+## HOC (Higher Order Components)
 * A pattern where a function takes a component as an argument and returns a new component
 ```javascript
 const enhancedComponent = higherOrderComponent(originalComponent)
 
 const IronMan = withSuit(TonyStark)
 ```
+### HOC
+<img src=".././images/hocComponent.png" width="500px">
+<br/>
+
+### Component using HOC
+<img src=".././images/componentWithHoc.png" width="500px">
