@@ -49,3 +49,20 @@ const IronMan = withSuit(TonyStark)
 
 ### Component using HOC
 <img src=".././images/componentWithHoc.png" width="500px">
+
+* One common mistake is that when you pass props into a component using an HOC, the props are passed into the HOC and not the component itself. To fix this make sure to spread your props from the HOC into the original component like this:
+
+```javascript
+<OriginalComponent
+  count={this.state.count}
+  incrementCount={this.incrementCount}
+  {...this.props}
+/>
+```
+Forwarding the props like this will forward the props to the original component
+
+* You can also add arguments into an HOC to give it arguments to differentiate between components using the same HOC
+```javascript
+UpdatedComponent(ClickCounter, 10)
+```
+The HOC can now consume the second parameter which can consumed by the HOC in a unique way for that component
