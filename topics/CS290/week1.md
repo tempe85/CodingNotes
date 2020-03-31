@@ -78,3 +78,4 @@ Content-Length: 18 # How much data sent back in the response body. Can help with
 4. Client receives response
    1. Parses response. Response might tell client to get more files (and make more requests)
 5. Client renders the page
+sdf
