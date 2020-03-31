@@ -1,3 +1,5 @@
+<small>[Return Home](./../../Notes.md)</small>
+
 # Python
 
 ### Important links
@@ -44,3 +46,5 @@ with open("data.csv", "w+") as csvfile: #opening file and setting it equal to va
   ```
 
 * Note: Use ./Scripts/activate command to restart the virtual environment
+* `pip freeze` will list the modules and the versions of those modules running in the current virtual environment
+  

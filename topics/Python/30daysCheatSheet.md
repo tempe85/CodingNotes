@@ -1,3 +1,5 @@
+<small>[Return Home](../../Notes.md)</small> | <small>[Return to Python Main](index.md)</small>
+
 # 30 Days of Python: Cheat Sheet
 A quick reference guide for using the Python Programming language.
 
@@ -200,20 +202,20 @@ print(text)
 file_obj = open(file_name, "<mode>")
 ```
 
-| Mode          | Description   |
-| ------------- | ------------- |
-| "r"           | Read only. Default mode. |
-| "rb"          | Read only in binary format |
-| "r+"          | Read and write |
-| "rb+"         | Read and write in binary format |
-| "w"           | Write only. Overwrites existing file or creates a new file. |
-| "wb"          | Write only in binary format. Overwrites existing file or creates a new file. |
-| "w+"          | Read and write. Overwrites existing file or creates a new file. |
-| "wb+"         | Read and write in binary format. Overwrites existing file or creates a new file.  |
-| "a"           | Append to existing file or creates new file. |
-| "ab"          | Append to existing file or creates new file in binary format. |
-| "a+"          | Read and append. Overwrites existing file or creates a new file. |
-| "ab+"         | Read and append in binary format. Overwrites existing file or creates a new file. |
+| Mode  | Description                                                                       |
+| ----- | --------------------------------------------------------------------------------- |
+| "r"   | Read only. Default mode.                                                          |
+| "rb"  | Read only in binary format                                                        |
+| "r+"  | Read and write                                                                    |
+| "rb+" | Read and write in binary format                                                   |
+| "w"   | Write only. Overwrites existing file or creates a new file.                       |
+| "wb"  | Write only in binary format. Overwrites existing file or creates a new file.      |
+| "w+"  | Read and write. Overwrites existing file or creates a new file.                   |
+| "wb+" | Read and write in binary format. Overwrites existing file or creates a new file.  |
+| "a"   | Append to existing file or creates new file.                                      |
+| "ab"  | Append to existing file or creates new file in binary format.                     |
+| "a+"  | Read and append. Overwrites existing file or creates a new file.                  |
+| "ab+" | Read and append in binary format. Overwrites existing file or creates a new file. |
 
 
 
