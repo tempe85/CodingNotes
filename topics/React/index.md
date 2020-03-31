@@ -1,5 +1,3 @@
-<small>[Return Home](./../../Notes.md)</small>
-
 # React
 
 ## React Hooks
@@ -38,46 +36,33 @@ useEffect(() => {
 
 - Second argument is a dependency on when the first argument method will run. In this case, when a prop called 'userIngredients' changes, then this will run again.
 
-### useCallback
-* Hook that saves a function so that a copy of the function is not needlessly generated, need to specify the dependencies of useCallback to determine when it needs to be re-rendered
-  
-  ```javascript
-    const removeIngredientHandler = useCallback(ingredientId => {
-    dispatchHttp({ type: "SEND" });
-    fetch(
-      `https://react-hooks-backend-6c85a.firebaseio.com/ingredients/${ingredientId}.json`,
-      {
-        method: "DELETE"
-      }
-    )
-      .then(response => {
-        dispatchHttp({ type: "RESPONSE" });
-        dispatchIngredients({ type: "DELETE", id: ingredientId });
-      })
-      .catch(error => {
-        dispatchHttp({
-          type: "ERROR",
-          errorMessage: `Failed to remove ingredient. ${error.message}`
-        });
-      });
-  }, []);
-  ```
-  * In this example no dependencies are needed
-### React Memo
-* `React.memo`
-  * Helps prevent rerenders when not needed (re-render to virtual DOM). Wraps functional components.
-  * Using with wrapper an entire component
-* `useMemo` 
-   * Saves a value to help prevent re-renders
-   * Typically not going to be used for entire functional components
+## HOC (Higher Order Components)
+* A pattern where a function takes a component as an argument and returns a new component
 ```javascript
-  const ingredientList = useMemo(() => {
-    return (
-      <IngredientList
-        ingredients={userIngredients}
-        onRemoveItem={removeIngredientHandler}
-      />
-    );
-  }, [userIngredients, removeIngredientHandler]);
+const enhancedComponent = higherOrderComponent(originalComponent)
+
+const IronMan = withSuit(TonyStark)
 ```
-* Still need to list dependencies for re-render like the previous hooks
+### HOC
+<img src=".././images/hocComponent.png" width="500px">
+<br/>
+
+### Component using HOC
+<img src=".././images/componentWithHoc.png" width="500px">
+
+* One common mistake is that when you pass props into a component using an HOC, the props are passed into the HOC and not the component itself. To fix this make sure to spread your props from the HOC into the original component like this:
+
+```javascript
+<OriginalComponent
+  count={this.state.count}
+  incrementCount={this.incrementCount}
+  {...this.props}
+/>
+```
+Forwarding the props like this will forward the props to the original component
+
+* You can also add arguments into an HOC to give it arguments to differentiate between components using the same HOC
+```javascript
+UpdatedComponent(ClickCounter, 10)
+```
+The HOC can now consume the second parameter which can consumed by the HOC in a unique way for that component
