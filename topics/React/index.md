@@ -46,11 +46,10 @@ const enhancedComponent = higherOrderComponent(originalComponent)
 const IronMan = withSuit(TonyStark)
 ```
 ### HOC
-<img src=".././images/hocComponent.png" width="500px">
+<img src="../.././images/hocComponent.png" width="500px">
 <br/>
-
 ### Component using HOC
-<img src=".././images/componentWithHoc.png" width="500px">
+<img src="../.././images/componentWithHoc.png" width="500px">
 
 * One common mistake is that when you pass props into a component using an HOC, the props are passed into the HOC and not the component itself. To fix this make sure to spread your props from the HOC into the original component like this:
 
