@@ -30,6 +30,9 @@
 
 ### Classes
 * [CS290](topics/CS290/index.md)
+
+### Misc
+* [Tips and tricks](topics/TipsAndTricks/index.md)
   
 ### Good tech links
 
