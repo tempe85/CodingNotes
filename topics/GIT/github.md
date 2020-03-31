@@ -1,4 +1,4 @@
-<small>[Return Home](../../Notes.md)</small> | <small>[Return to Git](index.md)</small>
+<small>[Return Home](../../README.md)</small> | <small>[Return to Git](index.md)</small>
 
 # GITHUB
 

@@ -1,4 +1,4 @@
-<small>[Return Home](../../Notes.md)</small>
+<small>[Return Home](../../README.md)</small>
 # GIT
 
 <u>Local links</u>

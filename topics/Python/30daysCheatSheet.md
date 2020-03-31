@@ -1,4 +1,4 @@
-<small>[Return Home](../../Notes.md)</small> | <small>[Return to Python Main](index.md)</small>
+<small>[Return Home](../../README.md)</small> | <small>[Return to Python Main](index.md)</small>
 
 # 30 Days of Python: Cheat Sheet
 A quick reference guide for using the Python Programming language.
