@@ -67,3 +67,62 @@ Forwarding the props like this will forward the props to the original component
 UpdatedComponent(ClickCounter, 10)
 ```
 The HOC can now consume the second parameter which can consumed by the HOC in a unique way for that component
+
+## Render Callback
+
+* Function `foo` takes a callback function as a parameter. When we call `foo` it <u>turns around and "calls back" to the passed in function</u>.
+```javascript 
+const foo = (hello) => {
+  return hello('foo');
+};
+
+foo((name) => {
+  return `hello from ${name}`;
+});
+
+// hello from foo
+```
+
+* In react, a render callback returns a portion of the rendered markup. 
+
+
+## Function as a Child Component (FaaCC)
+Web references: 
+* [Faccs are an antipattern](https://americanexpress.io/faccs-are-an-antipattern/)
+* [Functions as Child Components](https://medium.com/merrickchristensen/function-as-child-components-5f3920a9ace9)
+* [React Patterns Render Callback](https://reactpatterns.com/#render-callback)
+
+>Lets you pass a ender function to a component as the `children` prop. 
+It exploits the fact you can change what you can pass as children to a component. By default, `children` is a type of `ReactNodeList` (an array of JSX elements). It is what we get when placing JSX within other tags.
+
+When using FaCC, instead of passing JSX markup, you assign `children` as a function.
+```html
+<Foo>
+  {(name) => <div>`hello from ${name}`</div>}
+</Foo>
+```
+* The `Foo` component looks something like this:
+```javascript
+const Foo = ({ children }) => {
+  return children('foo');
+};
+```
+
+Example:
+```javascript
+class WindowWidth extends React.Component {
+
+....
+....
+  
+  render() {
+    const { width } = this.state;
+    return this.props.children(width);
+  }
+}
+```
+```html
+<WindowWidth>
+  {width => <div>window is {width}</div>}
+</WindowWidth>
+```
