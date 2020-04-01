@@ -48,6 +48,7 @@ const IronMan = withSuit(TonyStark)
 ### HOC
 <img src="../.././images/hocComponent.png" width="500px">
 <br/>
+
 ### Component using HOC
 <img src="../.././images/componentWithHoc.png" width="500px">
 
