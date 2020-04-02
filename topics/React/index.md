@@ -39,7 +39,12 @@ useEffect(() => {
 - Second argument is a dependency on when the first argument method will run. In this case, when a prop called 'userIngredients' changes, then this will run again.
 
 ## HOC (Higher Order Components)
+
+> Links:
+>[React Casts HOC](https://www.youtube.com/watch?v=LTunyI2Oyzw)
+
 * A pattern where a function takes a component as an argument and returns a new component
+* Encapsulating behavior you want to use accross components.
 ```javascript
 const enhancedComponent = higherOrderComponent(originalComponent)
 
@@ -127,3 +132,54 @@ class WindowWidth extends React.Component {
   {width => <div>window is {width}</div>}
 </WindowWidth>
 ```
+
+## Render Props
+
+Method that return JSX:
+```javascript
+const hello = (name) => {
+  return <div>`hello from ${name}`</div>;
+};
+```
+Sending this in as a prop:
+```html
+<Foo render={hello} />
+```
+Parent component:
+```javascript
+const Foo = ({ render }) => {
+  return render('foo');
+};
+```
+> Note: The big difference betwen this and component injection is we're treating this as a method that returns JSX and then calling it, not treating it as a component itself. 
+
+## Component Injection
+
+Component you want to inject a prop into:
+```javascript
+const Hello = ({ name }) => {
+  return <div>`hello from ${name}`</div>;
+};
+```
+Parent component:
+```html
+<Foo render={Hello} />
+```
+> Mote: `Hello` <u>must</u> be capitalized because components must be capitalized in React
+
+Parent component implementation:
+```javascript
+const Foo = ({ render: View }) => {
+  return <View name="foo" />;
+};
+```
+>Note: We are renaming render to View because again, components must be capitalized!
+
+You can also destructure it wherever you want:
+```javascript
+render(){
+  const { render: View } = this.props;
+  return <View width={width} />;
+}
+```
+
