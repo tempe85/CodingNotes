@@ -6,14 +6,17 @@
 # Programming
 
 ### Markdown
+
 - [Markdown](./topics/Markdown/index.md)
 
 ### Python
+
 - [Python](./topics/Python/index.md)
 
 ### Javascript
 
 - [ES6/JS](./topics/JavaScript/index.md)
+- [Eloquent JavaScript](topics/EloquentJavaScript/index.md)
 - [React](./topics/React/index.md)
 
 ### Backend
@@ -29,11 +32,13 @@
 - [Git](./topics/GIT/index.md)
 
 ### Classes
-* [CS290](topics/CS290/index.md)
+
+- [CS290](topics/CS290/index.md)
 
 ### Misc
-* [Tips and tricks](topics/TipsAndTricks/index.md)
-  
+
+- [Tips and tricks](topics/TipsAndTricks/index.md)
+
 ### Good tech links
 
 Dillinger uses a number of open source projects to work properly:
