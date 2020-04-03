@@ -42,6 +42,7 @@ useEffect(() => {
 
 > Links:
 >[React Casts HOC](https://www.youtube.com/watch?v=LTunyI2Oyzw)
+>, [HOC example](./hoc.md)
 
 * A pattern where a function takes a component as an argument and returns a new component
 * Encapsulating behavior you want to use accross components.
