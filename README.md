@@ -31,6 +31,10 @@
 
 - [Git](./topics/GIT/index.md)
 
+### SQL
+
+- [Git](./topics/SQL/index.md)
+
 ### Classes
 
 - [CS290](topics/CS290/index.md)
