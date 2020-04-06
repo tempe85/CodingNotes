@@ -46,3 +46,25 @@
 * How far one box is from antoehr is the `margin`
 * How much space there is between the edge of a box and its content is `padding`
 * `top left right bottom` are used to move the element. 
+
+## CSS Selectors
+
+* Can select things based on `type`, `class` or `id`. 
+
+Prescedence is: 
+<ol>
+<li>Id</li>
+<li>Class</li>
+<li>Type</li>
+</ol>
+
+#### Type selectors
+
+| Selector | Syntax | Definition |
+|----|----|----|
+|Basic | `p` {   ....  } | `p` targets `p` elements
+|Descendant selector | `nav ul { ... } ` | Targets elements of type 'x' which are descendeant of 'y' type. In the example this targets all `ul` elements contained in a `nav` element.
+| Child Selector | `nav > ul { ... } ` | Targets all elements of type 'x' which are <strong>direct</strong> children of type 'y'. In the example, this targets all `ul` elements with a direct `nav` parent. 
+| Adjacent sibiling | `h1 + p { ... } ` | Target all elemnt of type 'x' which is at the same level on the tree and **immediately after** an element of type 'y'. So `h1 + p` would target a `p` if it followed directlyd after a `h1`
+| General sibiling | `h1 ~ p { ... } ` | Similar to adjacent sibiling but it does not need to immediately follow (still needs to not come before). Targets all `p` on same level of `h1`. 
+| Types with class | `p.test { ... } ` | Targets type `p` with a `test` class. 
