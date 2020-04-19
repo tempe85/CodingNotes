@@ -35,6 +35,7 @@
 | `git stash save -u "Message"` | Stashes untracked files with message |
 |`git stash show -p "stash@{n}"` | Shows change contents in a stash
 |`git stash branch <name>` | Creates a new branch with lates stash, and then deletes the latest stash. can add `"stash@{n}` to specify a stash other than @0
+|`git checkout -b myFeature develop` | Allows you to create a new branch, branched off of a branch named 'develop'
 
 
 ## Commits
