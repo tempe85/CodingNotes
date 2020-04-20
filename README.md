@@ -33,7 +33,7 @@
 
 ### SQL
 
-- [Git](./topics/SQL/index.md)
+- [MySQL](./topics/SQL/index.md)
 
 ### Classes
 
