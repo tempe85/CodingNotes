@@ -33,7 +33,11 @@
 
 ### SQL
 
-- [Git](./topics/SQL/index.md)
+- [SQL](./topics/SQL/index.md)
+
+### UX
+
+- [UX](./topics/UX/index.md)
 
 ### Classes
 
