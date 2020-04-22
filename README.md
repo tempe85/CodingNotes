@@ -33,7 +33,7 @@
 
 ### SQL
 
-- [SQL](./topics/SQL/index.md)
+- [MySQL](./topics/SQL/index.md)
 
 ### UX
 

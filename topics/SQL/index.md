@@ -3,34 +3,97 @@
 # SQL
 
 What is a database? => A structured set of computerized data with an accessible interface
+
 <ol>
 <li>A collection of data</li>
 <li>A method for accessing and manipulating the data</li>
 </ol>
 
 App => Database management system => Database
-* A Database management system is what allows your app to interface with the Database
-* PostgreSQL, MySQL are both `database management systems`. 
+
+- A Database management system is what allows your app to interface with the Database
+- PostgreSQL, MySQL are both `database management systems`.
 
 `SQL` - Structrued Querey language
-* The language we use to 'talk' to our databases. 
 
-* When you work with `MySQL` you are primaily writing `SQL`. 
-    * PostreSQL and MySQL are very similar. 
+- The language we use to 'talk' to our databases.
+
+- When you work with `MySQL` you are primaily writing `SQL`.
+  - PostreSQL and MySQL are very similar.
 
 #### Groom SQL commands
-* `mysql-ctl start` - Start MySQL server
-* `mysql-ctl stop`  - Stop MySQL server
-* `mysql-ctl cli`   - Start MySQL shell 
-* `exit`            - Leave the MySQL shell
 
+- `mysql-ctl start` - Start MySQL server
+- `mysql-ctl stop` - Stop MySQL server
+- `mysql-ctl cli` - Start MySQL shell
+- `exit` - Leave the MySQL shell
 
 #### SQL Commands
 
-|Command | Description|
-|--------|------------|
-|SHOW DATABASES | Shows all databases on the server
-|CREATE DATABASE `<name>` | Creates a new database. 
-|DROP DATABSE `<name>` | Deletes a database
-|USE `<database name>` | Tells the server which database you want to use at any given time
-|SELECT database() | Tells you the currently used database
+| Command                  | Description                                                       |
+| ------------------------ | ----------------------------------------------------------------- |
+| SHOW DATABASES           | Shows all databases on the server                                 |
+| CREATE DATABASE `<name>` | Creates a new database.                                           |
+| DROP DATABSE `<name>`    | Deletes a database                                                |
+| USE `<database name>`    | Tells the server which database you want to use at any given time |
+| SELECT database()        | Tells you the currently used database                             |
+|SHOW TABLES | Show tables in your databse
+|SHOW COLUMNS FROM `<tablename>`| shows the columns of a table
+|DESC `<tablename>`| works similarly to SHOW COLUMNS FROM command
+|CREATE/DROP TABLE `<tablename>` | Create or delete a table. Creating a table requires you to add column name and type
+|SELECT * FROM `<tablesname>` | Select all data in a table
+|SHOW WARNINGS | If you get warnings this will show you the warning details 
+
+
+#### Tables
+
+- A collection of related data held in a structured format within a database.
+- Made up of headers (represent the variables) and rows (the actual data)
+- Data columns must contain matching datatypes
+
+```sql
+CREATE TABLE tablename
+(
+    column_name data_type,
+    column_name data_type
+);
+
+CREATE TABLE pastries
+(
+    name VARCHAR(50),
+    quantity INT,
+);
+```
+
+
+#### Types
+
+<img src="./../../images/sql_datatypes.jpg">
+
+- INT
+
+  - A whole number
+  - Max of 4.29 x 10^9 (32 bit right?) for unsigned and +/- 2.15 x 10^9 for signed
+
+- VARCHAR
+  - Variable-length string (as opposed to CHAR which has fixed length)
+  - 1 - 255 characters (8 bit / 1 byte)
+  - Must specify a maximum length e.g. `VARCHAR(100)`
+
+
+### INSERT Data
+
+```sql
+INSERT INTO cats(name, age)
+VALUES ('Jetson', 7),
+       ('Marlo', 1),
+       ('Berto', 1);
+```
+
+* The order you specify on the first line doesn't matter, but the values line must correspond to the order on the previous line.
+
+view data in a table:
+```sql
+SELECT * FROM `<tablename>`;
+```
+
