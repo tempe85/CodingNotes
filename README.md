@@ -43,6 +43,10 @@
 
 - [CS290](topics/CS290/index.md)
 
+### IDEs
+
+- [VS 2019](topics/IDES/vs2019.md)
+
 ### Misc
 
 - [Tips and tricks](topics/TipsAndTricks/index.md)
