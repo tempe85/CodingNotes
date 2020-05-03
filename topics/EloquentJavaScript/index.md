@@ -12,4 +12,5 @@ Links:
 - [Chapter 2](Ch_2_program_structure.md)
 - [Chapter 3](Ch_3_functions.md)
 - [Chapter 4](Ch_4_data_structures.md)
+- [Chapter 5](Ch_5_higher_order_funcs.md)
 - [Chapter 13](Ch_13_JS_and_Browser.md)

@@ -110,3 +110,38 @@ document.getElementById("result1").textContent;
 Primitive types: number, bools, string, undefined, null
 
 Complex types: function, object
+
+### Higher Order Functions
+
+- Functions that take in a function as an argument or return a function as a result
+
+Example:
+
+```javascript
+function forE(a, work) {
+  for (var i = 0; i < a.length; i++) {
+    work(a[i]);
+  }
+}
+```
+
+- This mimics what the `forEach` extension method does. Takes in an array, takes in a function that will _do work_ on each element of the array.
+
+Returning a function:
+
+```javascript
+// function declaration
+function toTheN(n) {
+  return function (x) {
+    return Math.pow(x, n);
+  
+  // or using arrow notation
+  const toTheN = (n) => (x) => Math.pow(x, n);
+}
+
+let square = toTheN(2);
+let toTheThird = toTheN(3);
+console.log(square(2)); // Returns: 4
+console.log(toTheThird(2)); // Returns: 8
+```
+
