@@ -145,3 +145,6 @@ console.log(square(2)); // Returns: 4
 console.log(toTheThird(2)); // Returns: 8
 ```
 
+### Debugging
+
+TIP: Add the keyword `debugger` to create a breakpoint that will be run to in the chrome debugger. 
