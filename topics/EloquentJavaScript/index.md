@@ -13,4 +13,7 @@ Links:
 - [Chapter 3](Ch_3_functions.md)
 - [Chapter 4](Ch_4_data_structures.md)
 - [Chapter 5](Ch_5_higher_order_funcs.md)
+- [Chapter 6](Ch_6_life_of_objects.md)
 - [Chapter 13](Ch_13_JS_and_Browser.md)
+- [Chapter 14](Ch_14_DOM.md)
+- [Chapter 15](Ch_15_handling_events.md)
