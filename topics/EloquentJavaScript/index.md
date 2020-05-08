@@ -17,3 +17,4 @@ Links:
 - [Chapter 13](Ch_13_JS_and_Browser.md)
 - [Chapter 14](Ch_14_DOM.md)
 - [Chapter 15](Ch_15_handling_events.md)
+- [Chapter 18](Ch_18_http_and_forms.md)
