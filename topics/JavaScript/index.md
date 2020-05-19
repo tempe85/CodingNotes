@@ -148,3 +148,35 @@ console.log(toTheThird(2)); // Returns: 8
 ### Debugging
 
 TIP: Add the keyword `debugger` to create a breakpoint that will be run to in the chrome debugger. 
+
+## Callback
+
+>A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action.
+
+```javascript
+function greeting(name) {
+  alert('Hello ' + name);
+}
+
+function processUserInput(callback) {
+  var name = prompt('Please enter your name.');
+  callback(name);
+}
+
+processUserInput(greeting);
+```
+* Synchronous callback shown here, as it is executed immediately
+
+```javascript
+setTimeout(() => taskOne(taskTwo), 2000);
+
+function taskOne (taskTwo) {
+  console.log("task 1");
+  taskTwo();
+};
+
+function taskTwo () {
+  console.log("task 2");
+};
+```
+* If you know that task one will take time before it is resolved, the only way, without promises, to make sure that task two will run after task one is to pass it in to task one and then invoke it inside of task one. 

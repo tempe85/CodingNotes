@@ -67,3 +67,68 @@ console.log(JSON.parse(req.responseText));
   * Can use the `load` event in Ajax for async requests
   * We register a callback before we send the request
     * If something needs to access the response it **must be in the callback function or a function the callback calls** 
+
+## Promises
+* A promise has three states:
+  * Pending
+  * Fulfilled
+  * Rejected
+  
+```javascript
+//Making a promise
+const willIGetNewPhone = new Promise(
+    (resolve, reject) => { // fat arrow
+        if (isMomHappy) {
+            const phone = {
+                brand: 'Samsung',
+                color: 'black'
+            };
+            resolve(phone);
+        } else {
+            const reason = new Error('mom is not happy');
+            reject(reason);
+        }
+
+    }
+);
+//Chaining the promise
+var showOff = function (phone) {
+    var message = 'Hey friend, I have a new ' +
+                phone.color + ' ' + phone.brand + ' phone';
+
+    return Promise.resolve(message);
+
+// call our promise
+const askMom = function () {
+    willIGetNewPhone
+        .then(showOff)
+        .then(fulfilled => console.log(fulfilled)) // fat arrow
+        .catch(error => console.log(error.message)); // fat arrow
+};
+```
+
+* If a function returns a promise, you are chaining promises. 
+
+Using Async/Await style:
+```javascript
+async function askMom() {
+    try {
+        console.log('before asking Mom');
+
+        let phone = await willIGetNewPhone;
+        let message = await showOff(phone);
+
+        console.log(message);
+        console.log('after asking mom');
+    }
+    catch (error) {
+        console.log(error.message);
+    }
+}
+//must also await when calling the function
+(async () => {
+    await askMom();
+})();
+
+```
+<img src="./../../images/promises.png">
