@@ -39,8 +39,9 @@
 
 - [UX](./topics/UX/index.md)
 
-### Classes
+### Oregon State CS
 
+- [General](topics/OregonStateCS/index.md)
 - [CS290](topics/CS290/index.md)
 
 ### IDEs
