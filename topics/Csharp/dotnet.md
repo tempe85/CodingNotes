@@ -1,3 +1,5 @@
+<small>[Return Home](../../README.md)</small> | <small>[Return to C# Main](index.md)</small>
+
 * The C# compilar used by the dotnet CLI tool converts your C# source code into `intermediate language (IL)` code and stores the IL in an assembly (a DLL or EXE file). IL code statements are like assembly language instructions, which are executed by .NET Core's virutal machine, known as `CoreCLR`.
 
 * At runtime, the `CoreCLR` loads the IL code form the assembly, the just-in-time (JIT) compiler compiles it into native CPU instructions, and then it is executed by the CPU on your machine. 

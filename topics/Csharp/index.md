@@ -2,6 +2,9 @@
 
 # `C #`
 
+- [DotNet](./dotnet.md)
+- [Razor Pages](./razor.md)
+
 `typeof()`
 
 - Must be the name of a type or a type parameter. Doing type testing the type must match exactly (==)
