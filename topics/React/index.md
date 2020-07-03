@@ -2,6 +2,13 @@
 
 # React
 
+
+|Keyword| Definition|
+|------|--------|
+|Side effects | Data fetching, subscriptions or manually changing the DOM can produce side effects beecause they affect other components and can't be done during rendering
+|Hooks|A special function that lets you 'hoo into' React features. For example, `useState` lets you add React state to function components. 
+
+
 ## React Hooks
 
 - Can only be used inside of Functional Components or other hooks
