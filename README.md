@@ -42,7 +42,8 @@
 ### Oregon State CS
 
 - [General](topics/OregonStateCS/index.md)
-- [CS290](topics/CS290/index.md)
+- [CS290 Web Design](topics/CS290/index.md)
+- [CS340 Databases](topics/CS340/index.md)
 
 ### IDEs
 
