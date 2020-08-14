@@ -34,3 +34,7 @@ function Example() {
 #### Effects with cleanup
 * Might need to cleanup something to prevent a memory leak. 
 * With clases, you setup the subscription in `componentDidMount` and clean up with `componentWillUnMount`
+
+
+### useCallback
+* Prevents a function from being created on every single render.
