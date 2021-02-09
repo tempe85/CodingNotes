@@ -97,3 +97,36 @@ view data in a table:
 SELECT * FROM `<tablename>`;
 ```
 
+### Ternary relationship (reference several relationships inside a single table)
+* Relationship between more than two things
+  * Supplier, order, customer (example)
+  * Does a customer order a part from multiple suppliers or do they order multiple parts from one supplier?
+
+### N-Ary relationship
+* An order must have a supplier, customer, part and warehouse
+* 
+
+<img src="./../../images/ternary.jpg" width="400px">
+
+### Aggregate relationships
+* Sometimes relationships can be related to other relationships
+* Easier to explain the cardinality (relationship between one table and another) than a ternary or N-ary relationship.
+
+<img src="./../../images/aggregaterelationship.jpg" width="400px">
+
+## Store Procedure
+* Let's you call a predefined set of queries
+
+## Triggers
+* Called every time some action happens. Usually will run a store procedure. 
+```sql
+CREATE TRIGGER ins_update_summary AFTER INSERT ON data
+FOR EACH ROW
+BEGIN
+call update_summary;
+END;
+```
+* call update_summary is the store procedure
+* The downside of this is it will be run every row that is updated, so if 30 rows are updated in a query it will run 30 times
+  * Often times you can just run some logic to do the update after the other query has been run, rather than making a trigger
+
