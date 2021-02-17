@@ -53,6 +53,11 @@
 
 - [Tips and tricks](topics/TipsAndTricks/index.md)
 
+### Regex
+
+- [Regex crossword](https://regexcrossword.com/)
+- [Regexer](https://regexr.com/)
+
 ### Good tech links
 
 Dillinger uses a number of open source projects to work properly:
