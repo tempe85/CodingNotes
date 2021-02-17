@@ -1,10 +1,9 @@
 <small>[Return Home](../../README.md)</small>
 
-
-| Keyword          | Definition                                                                                                |
-| ------------- | --------------------------------------------------------------------------------------------------------- |
-| `Algorithm`      | Step by step process to solve a problem. Written at the design time of the software development process                                          |
-| `Program`         | Written during the implementation part of the software development process                               |
+| Keyword     | Definition                                                                                              |
+| ----------- | ------------------------------------------------------------------------------------------------------- |
+| `Algorithm` | Step by step process to solve a problem. Written at the design time of the software development process |
+| `Program`   | Written during the implementation part of the software development process                              |
 
 <table>
 <tr>
@@ -54,22 +53,22 @@
 </tr>
 </table>
 
-
 ### Characteristics of an algorithm
-1. Input - 0 or more 
+
+1. Input - 0 or more
 2. Output -At least 1 output
 3. Definiteness - Single and exact meaning
 4. Finiteness - Must terminate at some point
 5. Effectiveness - Must serve a purpose to complete a procedure. Part of the solution
 
-
 ### How to analyze an Algorithm
+
 1. Time (time function)
 2. Space (Memory space)
 3. Network consumption (data transfer)
 4. Power consumption (important for hand held devices)
 5. CPU Registers it consumes
-  
+
 ```
 swap(a,b)
 {             TIME        SPACE
