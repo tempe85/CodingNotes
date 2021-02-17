@@ -193,5 +193,50 @@ cookie["name"] = "Zach";
 | `Protected Internal` | Accessible only from same assembly or any derived classes. Very unlikely it will be used |
 
 ### Constructor Inheritence
-* Base class constructors are not inherited
-* Base class constructors are always executed first
+
+- Base class constructors are not inherited
+- Base class constructors are always executed first
+
+### Conversion from derived class to base class (upcasting)
+
+### Conversion from base class to derived class (downcasting)
+
+```csharp
+if (obj is car)
+{
+    Car car = (Car) obj;
+}
+
+Car car = obj as Car;
+if(car != null)
+{
+    ...
+}
+```
+
+### Value Types + Reference Types
+
+- Value types are stored on the stack
+  - Removed when they go out of scope
+- Reference types are stored on the heap
+
+`Boxing`
+
+- Process of converting a value type instance to an object reference
+
+```csharp
+int number = 10;
+object obj = number;
+
+object obj = 10;
+// This gets stored on the heap instead of the stack
+```
+
+`Unboxing`
+
+```csharp
+object obj = 10;
+int number = (int)obj;
+```
+
+- Boxing/unboxing have a performance penalty.
