@@ -240,3 +240,52 @@ int number = (int)obj;
 ```
 
 - Boxing/unboxing have a performance penalty.
+
+### Method Overriding
+
+```csharp
+public class Shape
+{
+  public virtual void Draw()
+  {
+    // Default implementation
+  }
+}
+
+public class Circle : Shape
+{
+  public override void Draw()
+  {
+    // New implementation
+    base.Draw();  // Run base class method
+  }
+}
+```
+
+### Abstract Classes/Members
+
+```csharp
+public abstract class Shape
+{
+  public abstract void Draw();
+}
+
+public class Circle : Shape
+{
+  public override void Draw()
+  {
+    // Implementation for circle
+  }
+}
+```
+
+- If a member is abstract, the class must be abstract too.
+  - Difference between this and virtual, is that the base class virtual method can have its own implmentation that you can run. Abstract methods have no implementation.
+- Abstract classes cannot be instantiated
+- Abstract methods must be implemented by the derived class
+
+### Sealed
+
+- Opposite of abstract classes
+- Prevents derivation of classes or overriding of methods
+- Rarely (if ever) used.
