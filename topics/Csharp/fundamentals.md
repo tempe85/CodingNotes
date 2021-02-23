@@ -289,3 +289,30 @@ public class Circle : Shape
 - Opposite of abstract classes
 - Prevents derivation of classes or overriding of methods
 - Rarely (if ever) used.
+
+**Interfaces are a contract**
+
+### Interfaces and Extensibility
+
+`Dependency Injection`
+
+- In the constructor we are specifying the dependencies for a class
+
+### Using statement
+
+- Stream writer (among others) uses a file resource, which is not managed by the CLR (common language runtime)
+- We must dispose of the resource once we are done using it.
+
+```csharp
+        using (var streamWriter = new StreamWriter(_path, true))
+        {
+          streamWriter.WriteLine(message);
+        }
+```
+
+- There is an exception handling happening behind the scenes in case the file handling goes wrong
+
+### Interfaces are not for multiple inheritance
+
+- Interfaces have nothing to do with inheritance
+- There is no code that you are inheriting
