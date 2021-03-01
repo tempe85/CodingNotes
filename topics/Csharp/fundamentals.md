@@ -339,21 +339,48 @@ public class Circle : Shape
 ```csharp
       public delegate void PhotoFilterHandler(Photo photo);
 ```
-* Use a delegate when the caller doesn't need to access other properties or methods on the object implementing the method. 
 
-* Two generic delegates
-  * Func, takes 1-15 arguments and has a return type
-  * Action, takes 1-15 arguments (overloaded) and returns void;
+- Use a delegate when the caller doesn't need to access other properties or methods on the object implementing the method.
+
+- Two generic delegates
+  - Func, takes 1-15 arguments and has a return type
+  - Action, takes 1-15 arguments (overloaded) and returns void;
+
 ```csharp
     Func<int, int> squareNumbers = number => number * number;
     Action<int> writeLine = number => Console.WriteLine(number);
 ```
 
 # Lambda expression
-* An anonymous method
-  * No access modifier
-  * No name
-  * No return statement
 
+- An anonymous method
+  - No access modifier
+  - No name
+  - No return statement
 
+# Events and Delegates
 
+- Events allow communication between objects
+- Helps build loosley coupled Apps
+- Helps extending Apps
+
+```csharp
+public void Encode(Video video)
+{
+  // Encoding logic
+
+  OnVideoEncoded();
+}
+
+public void OnVideoEncoded(object source, EventArgs e)
+{
+
+}
+```
+
+- OnVideoEncoded lets subscribers know a video was encoded.
+
+## Delegates
+
+- Agreement/Contract between Publisher and Subscriber
+- Determines the signature of the event handler method in Subscriber
