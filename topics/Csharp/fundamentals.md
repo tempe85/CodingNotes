@@ -289,3 +289,14 @@ public class Circle : Shape
 - Opposite of abstract classes
 - Prevents derivation of classes or overriding of methods
 - Rarely (if ever) used.
+
+### Interfaces
+* Similar to a class
+* No implementation
+* No access modifiers
+* Help build loosely-coupled apps
+* Defines capabilities that a class should provide
+  * Methods defined by an interface when implemented must be public in that class
+  
+### Interfaces testability
+* Interfaces help isolate classes during unit testing
