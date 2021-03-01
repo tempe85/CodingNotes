@@ -291,16 +291,18 @@ public class Circle : Shape
 - Rarely (if ever) used.
 
 ### Interfaces
-* Similar to a class
-* No implementation
-* No access modifiers
-* Help build loosely-coupled apps
-* Defines capabilities that a class should provide
-  * Methods defined by an interface when implemented must be public in that class
-  
+
+- Similar to a class
+- No implementation
+- No access modifiers
+- Help build loosely-coupled apps
+- Defines capabilities that a class should provide
+  - Methods defined by an interface when implemented must be public in that class
+
 ### Interfaces testability
-* Interfaces help isolate classes during unit testing
-**Interfaces are a contract**
+
+- Interfaces help isolate classes during unit testing
+  **Interfaces are a contract**
 
 ### Interfaces and Extensibility
 
@@ -326,3 +328,32 @@ public class Circle : Shape
 
 - Interfaces have nothing to do with inheritance
 - There is no code that you are inheriting
+
+# DELEGATES
+
+- Object that knows how to call a method
+- Reference to a pointer to a function
+  - Defining the delegate shows what kind of signature it can have
+- Helps make code extensible (extendable)
+
+```csharp
+      public delegate void PhotoFilterHandler(Photo photo);
+```
+* Use a delegate when the caller doesn't need to access other properties or methods on the object implementing the method. 
+
+* Two generic delegates
+  * Func, takes 1-15 arguments and has a return type
+  * Action, takes 1-15 arguments (overloaded) and returns void;
+```csharp
+    Func<int, int> squareNumbers = number => number * number;
+    Action<int> writeLine = number => Console.WriteLine(number);
+```
+
+# Lambda expression
+* An anonymous method
+  * No access modifier
+  * No name
+  * No return statement
+
+
+
