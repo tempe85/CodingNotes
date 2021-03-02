@@ -384,3 +384,16 @@ public void OnVideoEncoded(object source, EventArgs e)
 
 - Agreement/Contract between Publisher and Subscriber
 - Determines the signature of the event handler method in Subscriber
+
+## Extension Methods
+
+- Add methods to existing class without changing source code or creating a new class that inherits from it
+
+# LINQ
+
+- Language integrated query
+- Can query:
+  - collections in memory (LINQ to object)
+  - Databases (LINQ to entities)
+  - XML (LINQ to XML)
+  - ADO.NET Data Sets (LINQ to Data Sets)
