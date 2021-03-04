@@ -397,3 +397,76 @@ public void OnVideoEncoded(object source, EventArgs e)
   - Databases (LINQ to entities)
   - XML (LINQ to XML)
   - ADO.NET Data Sets (LINQ to Data Sets)
+
+# Dynamics
+
+- Static languages types defined at compile-time
+- Dynamic langauges types are defined at run-time
+- C# started as a static language but added dynamics later
+
+```csharp
+            dynamic name = "mosh";
+            name = 10;
+
+            dynamic excelObject = "mosh";
+            excelObject.Optimize();
+```
+
+- This is legal in C#!
+
+# Exception Handling
+
+- Exceptions are essentially classes
+
+```csharp
+StreamReader streamReader = null;
+try
+{
+    streamReader = new StreamReader(@"c:\file.zip");
+    var content = streamReader.ReadToEnd();
+    throw new Exception("Oops");
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Sorry, an unexpected error occurred. {ex.Message}");
+}
+finally
+{
+    if(streamReader != null)
+        streamReader.Dispose();
+}
+```
+
+Using statement:
+
+```csharp
+try
+{
+    using(var streamReader = new StreamReader(@"c:\file.zip"))
+    {
+        var content = streamReader.ReadToEnd();
+    }
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Sorry, an unexpected error occurred. {ex.Message}");
+}
+```
+
+- If you use the using statement, C# will create the finally block under the hood and dispose of the stream reader when its finished.
+
+```csharp
+public class YoutubeException : Exception
+{
+  public YoutubeException(string message, Exception innerException) : base(message, innerException)
+  {
+    ...
+  }
+}
+```
+
+# Async Programming
+* Sync programming
+  * Program is executed one line at a time
+* Async
+  * When a function is called, program execution continues to the next line, without waiting for the function to complete
