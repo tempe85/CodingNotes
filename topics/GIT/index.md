@@ -25,18 +25,23 @@
 
 ## Stashing
 
-| Command             | Description                                    |
-| ------------------- | ---------------------------------------------- |
-| `git stash list`    | List stashes                                   |
-| `git stash apply n` | n is the number of the stash you want to apply |
-| `git stash drop n` | n is the stash number to remove
-|`git stash pop n` | Pops stash off stack and bumps other stashes up, probably better practice than drop                |
-| `git stash save "Your message"` | Saves a stash and tags it with a message |
-| `git stash save -u "Message"` | Stashes untracked files with message |
-|`git stash show -p "stash@{n}"` | Shows change contents in a stash
-|`git stash branch <name>` | Creates a new branch with lates stash, and then deletes the latest stash. can add `"stash@{n}` to specify a stash other than @0
-|`git checkout -b myFeature develop` | Allows you to create a new branch, branched off of a branch named 'develop'
+| Command                             | Description                                                                                                                     |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `git stash list`                    | List stashes                                                                                                                    |
+| `git stash apply n`                 | n is the number of the stash you want to apply                                                                                  |
+| `git stash drop n`                  | n is the stash number to remove                                                                                                 |
+| `git stash pop n`                   | Pops stash off stack and bumps other stashes up, probably better practice than drop                                             |
+| `git stash save "Your message"`     | Saves a stash and tags it with a message                                                                                        |
+| `git stash save -u "Message"`       | Stashes untracked files with message                                                                                            |
+| `git stash show -p "stash@{n}"`     | Shows change contents in a stash                                                                                                |
+| `git stash branch <name>`           | Creates a new branch with lates stash, and then deletes the latest stash. can add `"stash@{n}` to specify a stash other than @0 |
+| `git checkout -b myFeature develop` | Allows you to create a new branch, branched off of a branch named 'develop'                                                     |
 
+Iterate through and delete your git stashes:
+
+```shell
+for($i = 0; $i -lt 18; $i++){ git stash drop 0 }
+```
 
 ## Commits
 
