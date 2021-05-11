@@ -43,6 +43,12 @@ Iterate through and delete your git stashes:
 for($i = 0; $i -lt 18; $i++){ git stash drop 0 }
 ```
 
+Delete merged branches:
+
+```shell
+git branch --merged | %{$_.trim()}  | ?{$_ -notmatch 'develop' -and $_ -notmatch 'master'} | %{git branch -d $_}
+```
+
 ## Commits
 
 <u>Revert a commit </u>
