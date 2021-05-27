@@ -48,6 +48,11 @@ Delete merged branches:
 ```shell
 git branch --merged | %{$_.trim()}  | ?{$_ -notmatch 'develop' -and $_ -notmatch 'master'} | %{git branch -d $_}
 ```
+Recover deleted stashes:
+```shell
+git log --graph --oneline --decorate $( git fsck --no-reflog | %{ $_.Split(' ')[2]; } )
+```
+- Find the hash value for the stash you want to recover, then you can enter `git stash apply <hashvalue>`
 
 ## Commits
 
