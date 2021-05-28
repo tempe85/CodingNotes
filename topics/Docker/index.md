@@ -8,7 +8,8 @@ Important links:
 
 Docker commands:
 
-| Command | Description                                                                                                                                                     | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| Command | Description|                                                                                                                                                    
+| ---------- | -------------------- | 
 | docker system prune                                        | Removes all stopped containers                                                                                                                                  |     |
 | docker logs `<container id>`                               | Does not re-run the container, which just output logs from when a container was started                                                                         |     |
 | docker stop `<container id>`                               | Gives the container 10 seconds to stop, before killing operation                                                                                                |
