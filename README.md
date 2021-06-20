@@ -35,6 +35,10 @@
 
 - [MySQL](./topics/SQL/index.md)
 
+### RabbitMQ
+
+- [RabbitMQ](./topics/RabbitMQ/index.md)
+
 ### UX
 
 - [UX](./topics/UX/index.md)

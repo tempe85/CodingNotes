@@ -2,6 +2,14 @@
 
 # GITHUB
 
+- Deletes all branches merged with master/develop
+
+```shell
+git branch --merged | %{$_.trim()}  | ?{$_ -notmatch 'develop' -and $_ -notmatch 'master'} | %{git branch -d $_}
+```
+
+`git branch --merged` : Lists all branches merged to current branch
+
 ### Add Existing Project to Git
 
 1. Create a new repository on GitHub.

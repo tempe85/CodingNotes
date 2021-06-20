@@ -8,16 +8,25 @@ Important links:
 
 Docker commands:
 
-| Command                                    | Description                                                                                                                                                     |
-| ------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| docker system prune                        | Removes all stopped containers                                                                                                                                  |  |
-| docker logs `<container id>`               | Does not re-run the container, which just output logs from when a container was started                                                                         |  |
-| docker stop `<container id>`               | Gives the container 10 seconds to stop, before killing operation                                                                                                |
-| docker kill `<container id>`               | Kills container immediately                                                                                                                                     |
-| docker exec -it `<container id> <command>` | Executes a command in a running container<br />-it: Allows input text to the container, i allows you to gain stdin. <br /> -sh: Allows you to gain shell access |
-| docker ps --all                            | Shows all docker containers that exist on your system                                                                                                           |
-| docker ps                                  | Shows all currently running docker containers                                                                                                                   |
-| docker run -it `<container id>` sh         | Allows you to gain shell access to an already built docker container (not currently running like with exec)                                                     |
+| Command | Description|                                                                                                                                                    
+| ---------- | -------------------- | 
+| docker system prune                                        | Removes all stopped containers                                                                                                                                  |     |
+| docker logs `<container id>`                               | Does not re-run the container, which just output logs from when a container was started                                                                         |     |
+| docker stop `<container id>`                               | Gives the container 10 seconds to stop, before killing operation                                                                                                |
+| docker kill `<container id>`                               | Kills container immediately                                                                                                                                     |
+| docker exec -it `<container id> <command>`                 | Executes a command in a running container<br />-it: Allows input text to the container, i allows you to gain stdin. <br /> -sh: Allows you to gain shell access |
+| docker ps --all                                            | Shows all docker containers that exist on your system                                                                                                           |
+| docker ps                                                  | Shows all currently running docker containers                                                                                                                   |
+| docker run -it `<container id>` sh                         | Allows you to gain shell access to an already built docker container (not currently running like with exec)                                                     |
+| docker stop $(docker ps -a -q)                             | Stops all docker containers                                                                                                                                     |
+| docker rm $(docker ps -a -q)                               | Stop and remove all docker containers                                                                                                                           |
+| docker image ls                                            | List all docker images                                                                                                                                          |
+| docker image rm {id}                                       | Remove docker image                                                                                                                                             |
+| docker volume prune                                        | Remove all docker volumes (can sometimes build up and cause space issues)                                                                                       |
+| docker exec -it {image}                                    | Executes the container                                                                                                                                          |
+| docker run -it --rm --entrypoint /bin/bash rabbitmq:latest | TODO: Add what this does                                                                                                                                        |
+| docker network ls                                          | Lists docker network bridges                                                                                                                                    |
+| docker network rm                                          | Removes docker network bridge                                                                                                                                   |
 
 [dockerdocs]: https://docs.docker.com/get-docker/
 
