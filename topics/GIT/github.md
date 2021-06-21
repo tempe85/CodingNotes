@@ -2,7 +2,11 @@
 
 # GITHUB
 
-- Deletes all branches merged with master/develop
+Important Links:
+- [Github Handbook](https://guides.github.com/introduction/git-handbook/)
+
+
+Deletes all branches merged with master/develop:
 
 ```shell
 git branch --merged | %{$_.trim()}  | ?{$_ -notmatch 'develop' -and $_ -notmatch 'master'} | %{git branch -d $_}

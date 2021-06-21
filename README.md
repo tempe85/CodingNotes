@@ -48,6 +48,7 @@
 - [General](topics/OregonStateCS/index.md)
 - [CS290 Web Design](topics/CS290/index.md)
 - [CS340 Databases](topics/CS340/index.md)
+- [CS361 Software Engineering I](topics/CS361/index.md)
 
 ### IDEs
 
