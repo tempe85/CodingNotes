@@ -310,6 +310,8 @@ public class Circle : Shape
 
 - In the constructor we are specifying the dependencies for a class
 
+
+
 ### Using statement
 
 - Stream writer (among others) uses a file resource, which is not managed by the CLR (common language runtime)
