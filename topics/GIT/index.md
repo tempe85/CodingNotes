@@ -64,3 +64,8 @@ git log --graph --oneline --decorate $( git fsck --no-reflog | %{ $_.Split(' ')[
 
 - First revert a commit: `git reset --soft HEAD~1`
 - Then run: `git push -f` (at least on bitbucket)
+
+<u>Reset a branch to match remote branch</u>
+
+- Run: `git reset --hard origin/{branchName}`
+- Use this when local master/develop are no longer matching the remote branch (e.g. accidental commit)
