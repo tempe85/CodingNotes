@@ -8,6 +8,18 @@
 | `Services`                         | Out-of-process components who communicate with a mechanism such as a web service request, or remote procedure call.                                                                       |
 | `Encapsulation`                    | Hide the internal representation, or state of an object from the outside. Bundling of data and methods that work on that data within one unit (class)                                     |
 
+### Characteristics of Microservices 
+
+1. Componentization via services
+2. Organized around business capabilities
+3. Products not Projects
+4. Smart endpoints and dumb pipes
+5. Decentralized Governance
+6. Decentralized Data Management
+7. Infrastructure Automation
+8. Design for failure
+9. Evolutionary Design
+
 ### Why to use services as components vs libraries:
 
 - Independently deployable
