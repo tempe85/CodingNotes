@@ -112,6 +112,7 @@ Demultiplexing at receiving host:
 ### Error detection
 
 - Can detect if there was corruption
+- Note: The maximum UDP header size is 8 bytes (2 bytes for each section: source port, destination port, segment length, checksum)
 
 <img src="./../../images/udperrordetection.PNG" width="600px" height="400px">
 
