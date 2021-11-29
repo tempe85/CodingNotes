@@ -154,4 +154,48 @@
 
 <img src="./../../images/arpsteps.PNG">
 
+<img src="./../../images/arpsteps4.PNG">
+
 - ARP is plug-n-play. Nodes create their ARP tables without a network admin.
+
+# LAN topologies and Ethernet
+
+- Topologies
+
+  - Bus
+
+    - Single shared medium that all computers can connect to. Usually twisted-pair.
+    - Both ends require a terminator so the signals don't refect back and forth, but are absorbed. This is a legacy topology
+
+  - Ring
+    - Shared medium is configured in a loop. Usually uses token ring MAC protocol.
+    - Shape refers to logical connections, not actual physical layout.
+    - Legacy toplogy
+  - Star
+    - Used most frequently today
+    - All computers are attached to a central hub and connections are not shared.
+    - Full duplex communication between computers and the central hub.
+      - Makes it possible for central hub/computer to handle many simultaneous connections
+    - Central hub must be programmable to manage connections.
+      - If the hub has the capability to add/remove connections in plug-n-play manner we call that a `switch`
+
+### Star topology
+
+<img src="./../../images/ringtopology.PNG">
+
+<img src="./../../images/switchprotocol.PNG">
+
+## Ethernet
+
+- 3m-500m in length
+- Original bus toplogy has the ethernet standard.
+- Uses MA protocol CSMA/CD
+- Typically single coax cable or unshielded twisted-pair (ether)
+  - Can be cable, fiber, or even wireless
+  - 10 Mbps, 100Mbps, 1Gbps, 10Gps
+
+### Ethernet frame format
+
+<img src="./../../images/ethernetprotocol.PNG">
+
+<img src="./../../images/ethernetprotocol2.PNG">
