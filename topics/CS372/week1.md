@@ -1,3 +1,5 @@
+<small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
+
 `Modems` connect end systems to edge routers via access network media
 
 - Gateway to internet core

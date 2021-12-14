@@ -1,3 +1,5 @@
+<small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
+
 ## The Transport Layer
 
 - Process to process communication
@@ -207,7 +209,8 @@ TCP segment:
 - Two classes of ICMP messages: Error and informational
 
 <img src="./../../images/icmperrorandinfo.PNG" width="600px" height="800px">
-
+<small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
+s
 <img src="./../../images/icmperror.PNG" width="600px" height="600px">
 
 <img src="./../../images/icmpinfo.PNG" width="600px" height="400px">

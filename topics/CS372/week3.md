@@ -1,3 +1,5 @@
+<small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
+
 ## HTTP Protocol
 
 - Application protocol
@@ -86,58 +88,62 @@ Three components:
 <img src="./../../images/smtpexample.PNG">
 <img src="./../../images/smtpscenario.PNG">
 
-* MIME 
-  * Multipurpose internet mail extension, 
-  * Allows SMTP to handle foreign characters and images
+- MIME
+  - Multipurpose internet mail extension,
+  - Allows SMTP to handle foreign characters and images
 
 ### Mail access protocols
-* POP: Post office protocol
-  * mail client programs
-  * POP3, download and delete mode
-    * Stateless across sessions
-    * Download and keep copies of messages on different clients
-* IMAP: Internet mail access protocol
-  * More complicated version of POP
-  * Keep all messages in server
-  * Allow user to organize messages in folders
-  * IMAP keeps user state across sessions
-* HTTP: gmail, hotmail, yahoo mail
-  * browser mail services
 
+- POP: Post office protocol
+  - mail client programs
+  - POP3, download and delete mode
+    - Stateless across sessions
+    - Download and keep copies of messages on different clients
+- IMAP: Internet mail access protocol
+  - More complicated version of POP
+  - Keep all messages in server
+  - Allow user to organize messages in folders
+  - IMAP keeps user state across sessions
+- HTTP: gmail, hotmail, yahoo mail
+  - browser mail services
 
 ## DNS (Domain Name Services)
 
-* Allows hosts to find one another
-  * Translates between symbolic name and IP address
-* Hierarchical, distributed database that allows for the translation between domain names to IP addresses
-  * `Distributed database`: Implemented in hierarchy of many name servers
-  * `Application-layer protocol`: Running at host, routers and name servers to resolve names
-* `TLD: Top level domain`: .com, .edu, ect.
-* DNS resource records defined name translation, authoritative name server resolution, canonical (real) server names, mail server resolution and time-to-live (ttl) records
-* DNS protocol defines query and response formats (both the same)
-* Often uses UDP, although can use TCP
+- Allows hosts to find one another
+  - Translates between symbolic name and IP address
+- Hierarchical, distributed database that allows for the translation between domain names to IP addresses
+  - `Distributed database`: Implemented in hierarchy of many name servers
+  - `Application-layer protocol`: Running at host, routers and name servers to resolve names
+- `TLD: Top level domain`: .com, .edu, ect.
+- DNS resource records defined name translation, authoritative name server resolution, canonical (real) server names, mail server resolution and time-to-live (ttl) records
+- DNS protocol defines query and response formats (both the same)
+- Often uses UDP, although can use TCP
 
-* All application use IP addresses through TCP/IP protocol software
-* Right most component of a URL is the most important (e.g. .com, the TLD)
+- All application use IP addresses through TCP/IP protocol software
+- Right most component of a URL is the most important (e.g. .com, the TLD)
 
 <u>DNS Services</u>
-* Hostname to IP address translation
-  * DNS lookup
-* Web server aliasing (canonical, alias names)
-* Mail server aliasing
-* load distribution
+
+- Hostname to IP address translation
+  - DNS lookup
+- Web server aliasing (canonical, alias names)
+- Mail server aliasing
+- load distribution
 
 <img src="./../../images/dns.PNG">
 
 ### Root name servers
-* Contacted by local name server that can not resolve name
-* Gets mapping from authoritative name server if name mapping not known, and returns mapping to local name server
+
+- Contacted by local name server that can not resolve name
+- Gets mapping from authoritative name server if name mapping not known, and returns mapping to local name server
 
 ### DNS records
-* Distrbuted database storing resource records
-* RR format: (name, value type, ttl)
+
+- Distrbuted database storing resource records
+- RR format: (name, value type, ttl)
+
+<small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
 
 <img src="./../../images/dnsformat.PNG">
 
 <img src="./../../images/dnsmessage.PNG">
-

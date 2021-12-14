@@ -1,3 +1,5 @@
+<small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
+
 ## RDT with TCP - Stop & Wait, Pipelining, and the Sliding Window
 
 | Keyword                   | Definition                                                                                                                                                                                                                          |
@@ -81,9 +83,11 @@ These two scenarios are similar to ack loss. If the acks arrive before segment t
 <img src="./../../images/fastretransmit.PNG" width="600px" height="400px">
 <img src="./../../images/fastretransmit2.PNG" width="600px" height="400px">
 
-| Question                                                               | Answer                                                                                                                                                                                                                                                                                      |
+| Question | Answer |
+<small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
+
 | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `What is the purpose of the TCP countdown timer?`                      | The countdown timer is used in RDT to help determine if a packet has dropped. TCP will retransmit a packet, and restart the timer, upon a timer interrupt.                                                                                                                                  |
-| `What is the key point of a cumulative acknowledgement scheme?`        | The ACK you receive is for the next expected byte number. This means that an ACK for byte #N means that all bytes (N-1, N-2, … 1) have already been received.                                                                                                                               |
-| `What are the key points of a Selective Repeat retransmission scheme?` | Selective repeat retransmission will keep a countdown timer for each un-ACK’d segment. When the protocol calls for a retransmission, it will only re-transmit un-ACK’d segments individually, rather than a bulk dump of all un-ACK’d segments.                                             |
-| `What is the purpose of fast retransmit? How is it implemented?`       | Fast retransmit was originated to streamline the process of retransmissions, to increase utilization. If a TCP sender sees three duplicate ACKs (so four ACKs total) for the same segment, it assumes the segment was dropped, and retransmits, even if the countdown timer hasn’t expired. |
+| `What is the purpose of the TCP countdown timer?` | The countdown timer is used in RDT to help determine if a packet has dropped. TCP will retransmit a packet, and restart the timer, upon a timer interrupt. |
+| `What is the key point of a cumulative acknowledgement scheme?` | The ACK you receive is for the next expected byte number. This means that an ACK for byte #N means that all bytes (N-1, N-2, … 1) have already been received. |
+| `What are the key points of a Selective Repeat retransmission scheme?` | Selective repeat retransmission will keep a countdown timer for each un-ACK’d segment. When the protocol calls for a retransmission, it will only re-transmit un-ACK’d segments individually, rather than a bulk dump of all un-ACK’d segments. |
+| `What is the purpose of fast retransmit? How is it implemented?` | Fast retransmit was originated to streamline the process of retransmissions, to increase utilization. If a TCP sender sees three duplicate ACKs (so four ACKs total) for the same segment, it assumes the segment was dropped, and retransmits, even if the countdown timer hasn’t expired. |

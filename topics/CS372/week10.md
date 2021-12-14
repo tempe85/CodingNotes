@@ -1,3 +1,5 @@
+<small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
+
 # Ethernet Frame and Multiple Access
 
 <img src="./../../images/ethernetframe2.PNG">

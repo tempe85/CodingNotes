@@ -1,3 +1,5 @@
+<small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
+
 # Routing and Dijkstra's algorithm
 
 - Shortest path algoirthm
@@ -42,8 +44,8 @@
 
 - Fragment loss
   - IP does not guarentee datagram delivery, so fragments may be lost
-  - Desitination sets timer with first fragment
-    - If timer expires before all fragments arrive then the destination drops the entire datagram.
+  - Desitination sets timer with first fragment - If timer expires before all fragments arrive then the destination drops the entire datagram.
+    <small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
 
 ## Network address translation (NAT)
 

@@ -1,3 +1,5 @@
+<small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
+
 # The Network Layer
 
 - Network layer protocols run at the edge and at the core
