@@ -69,3 +69,7 @@ git log --graph --oneline --decorate $( git fsck --no-reflog | %{ $_.Split(' ')[
 
 - Run: `git reset --hard origin/{branchName}`
 - Use this when local master/develop are no longer matching the remote branch (e.g. accidental commit)
+
+<u>Pull and merge a different branch into your current branch</u>
+
+- Run: `git pull origin <branchToMerge>`
