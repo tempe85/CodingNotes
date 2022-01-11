@@ -1,3 +1,5 @@
+<small>[Return Home](../../README.md)</small> | <small>[Return to C# Main](index.md)</small>
+
 ## JSON
 
 JSON.NET INFO: https://www.newtonsoft.com/json/help/html/Introduction.htm

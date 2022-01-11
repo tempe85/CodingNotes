@@ -4,6 +4,7 @@
 
 - [DotNet](./dotnet.md)
 - [Razor Pages](./razor.md)
+- [Json.NET](./Json.md)
 
 `typeof()`
 
