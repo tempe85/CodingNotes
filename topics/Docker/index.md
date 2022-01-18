@@ -8,8 +8,8 @@ Important links:
 
 Docker commands:
 
-| Command | Description|                                                                                                                                                    
-| ---------- | -------------------- | 
+| Command                                                    | Description                                                                                                                                                     |
+| ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
 | docker system prune                                        | Removes all stopped containers                                                                                                                                  |     |
 | docker logs `<container id>`                               | Does not re-run the container, which just output logs from when a container was started                                                                         |     |
 | docker stop `<container id>`                               | Gives the container 10 seconds to stop, before killing operation                                                                                                |
@@ -100,3 +100,7 @@ Restart policies in the docker-compose file:
 |`on-failure`| Only restart if the container stops with an error code
 |`unless-stopped`| Always restart unless we (the devs) forced stop
 |`docker-compose ps`| Finds all running containers to a `docker-compose.yml` file (command must be run in file where `docker-compose.yml` file exists)
+
+### Cleaning up docker disk space in WSL2
+
+Follow this guide: https://marcroussy.com/2020/12/01/cleaning-up-docker-disk-space-in-wsl2/
