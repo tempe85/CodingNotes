@@ -1,3 +1,18 @@
+| Keyword    | Definition                                                               |
+| ---------- | ------------------------------------------------------------------------ |
+| `Producer` | user application that sends messages                                     |
+| `Queue`    | A buffer that stores messages                                            |
+| `Consumer` | A user application that receives messages                                |
+| `Exchange` | Receives messages from producers and pushes those messages into queue(s) |
+
+Code snippets to start a project for tutorial:
+
+```bash
+dotnet new console --name <ProjectName>
+dotnet add package RabbitMQ.Client -s https://api.nuget.org/v3/index.json
+dotnet restore
+```
+
 Using RabbitMQ with a dotnet backend with docker:
 
 1. Add configuration to docker compose file
@@ -105,6 +120,16 @@ Receiving:
             Console.ReadLine();
 ```
 
+## Queues
+
+`channel.QueueDeclare(...)`
+| Flag | Definition |
+| ---------- | ------------------------------------------------------------------------ |
+| `Durable` | The queue will survive a broker restart |
+| `Exclusive` | used by only one connection and the queue will be deleted when that connection closes |
+| `Auto-delete` | queue that has had at least one consumer is deleted when last consumer unsubscribes |
+| `Arguments ` | optional; used by plugins and broker-specific features such as message TTL, queue length limit, etc |
+
 ## Work Queues
 
 - Distribute time-consuming tasks among multiple workers
@@ -166,3 +191,16 @@ Receiving:
 ```csharp
 channel.BasicQos(0, 1, false);
 ```
+
+## Publish/Subscribe
+
+- Publish/suscribe pattern is when a message is delivered to multiple consumers.
+
+<img src="./../../images/rabbitmq.PNG">
+
+- Producer sends messages to an exchange
+- The exchange pushes the messages into one more queues (or discards the message) based on the exchange type
+
+### Exchange Types
+
+- `Fanout` - Broadcasts all the messages it receives to all the queues it knows.
