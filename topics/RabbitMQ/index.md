@@ -204,3 +204,23 @@ channel.BasicQos(0, 1, false);
 ### Exchange Types
 
 - `Fanout` - Broadcasts all the messages it receives to all the queues it knows.
+
+## Routing
+
+- Subscribe to only a subset of messages
+- A binding is a relationship between an exchange and a queue. E.g. The queue is 'interested' in messages from this exchange.
+- Bindings chan take a `routingKey` param (binding key).
+
+```csharp
+channel.QueueBind(queue: queueName,
+                  exchange: "direct_logs",
+                  routingKey: "black");
+```
+
+- The meaning of a binding key depends on the exchange type, with a `fanout` exchange this is ignored since it sends messages to all queues it has a binding with.
+
+<img src="./../../images/directExchange.PNG">
+
+- A `direct` exchange allows filtering of messages
+  - The message goes to the queues whose `binding key` matches the `routing key` of the message.
+  - A queue can have multiple binding keys with the exchange and also to have the same binding key bound to multiple queues
