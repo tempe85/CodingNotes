@@ -224,3 +224,43 @@ channel.QueueBind(queue: queueName,
 - A `direct` exchange allows filtering of messages
   - The message goes to the queues whose `binding key` matches the `routing key` of the message.
   - A queue can have multiple binding keys with the exchange and also to have the same binding key bound to multiple queues
+
+## Topic Exchange
+
+- Direct exchanges cannot do routing based on multiple criteria.
+  - What if we want to subscribe to logs based on severity but also the source?
+- The routing key cnanot be arbitrary, it has to be a list of words with dot delimitors
+  - E.g. `stock.usd.nyse` (up to 255 bytes)
+  - The binding key must be in the same form.
+- `*` (star) can substitute for exactly one word
+- `#` (hash) can substitute for zero or more words
+
+<img src="./../../images/topicexchange.PNG">
+
+- Routing key: `<speed>.<color>.<species>`
+- Q1 is interested in orange animals
+- Q2 wants everything about rabbits and lazy animals
+
+## Remote procedure call
+
+<img src="./../../images/rpcexchange.PNG">
+
+- What if we need to run a function on a remote computer and wait for the result?
+
+```csharp
+var properties = channel.CreateBasicProperties();
+properties.Persistent = true;
+
+```
+
+Message Properties
+| Property | Definition |
+| ---------- | ------------------------------------------------------------------------ |
+| `Persistent` | Marks a message as persistent (true) or transient. Saves message to the disk if persistent is true. This helps with situations where the RabbitMQ server goes down |
+| `DeliveryMode` | Controls the same thing as persistent |
+| `ContentType` | USed to describe the mime-type (file format) of the encoding, this is often `application/json` |
+| `ReplyTo ` | Names a callback queue |
+|`CorrelationId`| Useful to correlate RPC responses with requests|
+
+- The `CorrelationId` is used to determine which request a response belongs to. A unique value is used for every request.
+  - If there is an uknown id the message is discarded.
