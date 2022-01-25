@@ -30,20 +30,19 @@ App => Database management system => Database
 
 #### SQL Commands
 
-| Command                  | Description                                                       |
-| ------------------------ | ----------------------------------------------------------------- |
-| SHOW DATABASES           | Shows all databases on the server                                 |
-| CREATE DATABASE `<name>` | Creates a new database.                                           |
-| DROP DATABSE `<name>`    | Deletes a database                                                |
-| USE `<database name>`    | Tells the server which database you want to use at any given time |
-| SELECT database()        | Tells you the currently used database                             |
-|SHOW TABLES | Show tables in your databse
-|SHOW COLUMNS FROM `<tablename>`| shows the columns of a table
-|DESC `<tablename>`| works similarly to SHOW COLUMNS FROM command
-|CREATE/DROP TABLE `<tablename>` | Create or delete a table. Creating a table requires you to add column name and type
-|SELECT * FROM `<tablesname>` | Select all data in a table
-|SHOW WARNINGS | If you get warnings this will show you the warning details 
-
+| Command                         | Description                                                                         |
+| ------------------------------- | ----------------------------------------------------------------------------------- |
+| SHOW DATABASES                  | Shows all databases on the server                                                   |
+| CREATE DATABASE `<name>`        | Creates a new database.                                                             |
+| DROP DATABSE `<name>`           | Deletes a database                                                                  |
+| USE `<database name>`           | Tells the server which database you want to use at any given time                   |
+| SELECT database()               | Tells you the currently used database                                               |
+| SHOW TABLES                     | Show tables in your databse                                                         |
+| SHOW COLUMNS FROM `<tablename>` | shows the columns of a table                                                        |
+| DESC `<tablename>`              | works similarly to SHOW COLUMNS FROM command                                        |
+| CREATE/DROP TABLE `<tablename>` | Create or delete a table. Creating a table requires you to add column name and type |
+| SELECT \* FROM `<tablesname>`   | Select all data in a table                                                          |
+| SHOW WARNINGS                   | If you get warnings this will show you the warning details                          |
 
 #### Tables
 
@@ -65,7 +64,6 @@ CREATE TABLE pastries
 );
 ```
 
-
 #### Types
 
 <img src="./../../images/sql_datatypes.jpg">
@@ -80,7 +78,6 @@ CREATE TABLE pastries
   - 1 - 255 characters (8 bit / 1 byte)
   - Must specify a maximum length e.g. `VARCHAR(100)`
 
-
 ### INSERT Data
 
 ```sql
@@ -90,35 +87,42 @@ VALUES ('Jetson', 7),
        ('Berto', 1);
 ```
 
-* The order you specify on the first line doesn't matter, but the values line must correspond to the order on the previous line.
+- The order you specify on the first line doesn't matter, but the values line must correspond to the order on the previous line.
 
 view data in a table:
+
 ```sql
 SELECT * FROM `<tablename>`;
 ```
 
 ### Ternary relationship (reference several relationships inside a single table)
-* Relationship between more than two things
-  * Supplier, order, customer (example)
-  * Does a customer order a part from multiple suppliers or do they order multiple parts from one supplier?
+
+- Relationship between more than two things
+  - Supplier, order, customer (example)
+  - Does a customer order a part from multiple suppliers or do they order multiple parts from one supplier?
 
 ### N-Ary relationship
-* An order must have a supplier, customer, part and warehouse
-* 
+
+- An order must have a supplier, customer, part and warehouse
+-
 
 <img src="./../../images/ternary.jpg" width="400px">
 
 ### Aggregate relationships
-* Sometimes relationships can be related to other relationships
-* Easier to explain the cardinality (relationship between one table and another) than a ternary or N-ary relationship.
+
+- Sometimes relationships can be related to other relationships
+- Easier to explain the cardinality (relationship between one table and another) than a ternary or N-ary relationship.
 
 <img src="./../../images/aggregaterelationship.jpg" width="400px">
 
 ## Store Procedure
-* Let's you call a predefined set of queries
+
+- Let's you call a predefined set of queries
 
 ## Triggers
-* Called every time some action happens. Usually will run a store procedure. 
+
+- Called every time some action happens. Usually will run a store procedure.
+
 ```sql
 CREATE TRIGGER ins_update_summary AFTER INSERT ON data
 FOR EACH ROW
@@ -126,7 +130,32 @@ BEGIN
 call update_summary;
 END;
 ```
-* call update_summary is the store procedure
-* The downside of this is it will be run every row that is updated, so if 30 rows are updated in a query it will run 30 times
-  * Often times you can just run some logic to do the update after the other query has been run, rather than making a trigger
 
+- call update_summary is the store procedure
+- The downside of this is it will be run every row that is updated, so if 30 rows are updated in a query it will run 30 times
+
+  - Often times you can just run some logic to do the update after the other query has been run, rather than making a trigger
+
+  ## Tips/Tricks
+
+  - If you have defined a table type that you want to use in Microsoft sql server you can use this type of code:
+
+```sql
+USE [TableName]
+GO
+
+DECLARE @ids [context].[udtt_BigList]
+INSERT INTO @ids VALUES (30534)
+
+DECLARE @return_value int
+
+EXEC @return_value = [context].[usp_GetStoreProc]
+     @storeProcVariableIds = @ids
+
+SELECT 'Return Value' = @return_value
+
+GO
+
+```
+
+- This allows you to run a store proc that requires you to pass through a table type variable as a param.
