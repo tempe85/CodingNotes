@@ -209,3 +209,31 @@ Docker desktop has already modified this file
 
 SSL nginx Docker
 https://gist.github.com/dahlsailrunner/679e6dec5fd769f30bce90447ae80081
+
+<img src="./../../images/docker_dockercomposeoverview.PNG">
+
+<img src="./../../images/docker_composedns.PNG">
+
+## Data Persistence in Containers
+
+<img src="./../../images/docker_datapersistence.PNG">
+
+- New data stored in a database hosted by a container will not be persistent when the container is recreated. Therefore we need to store data outside of the container in a file share.
+
+<img src="./../../images/docker_databaseoptions.PNG">
+
+## WSL Config
+
+- https://docs.microsoft.com/en-us/windows/wsl/wsl-config#wsl-2-settings
+
+```
+[wsl2]
+memory=4GB
+processors=2
+```
+
+WSL Configuration
+
+- Assign limits to WSL instances
+- Defaults to 8GB or half available RAM (whichever is less)
+- `C:\Users\<username>\.wslconfig`
