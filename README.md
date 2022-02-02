@@ -58,6 +58,7 @@
 ### Misc
 
 - [Tips and tricks](topics/TipsAndTricks/index.md)
+- [Clean Code](topics/CleanCode/index.md)
 
 ### Regex
 

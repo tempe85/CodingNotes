@@ -237,3 +237,31 @@ WSL Configuration
 - Assign limits to WSL instances
 - Defaults to 8GB or half available RAM (whichever is less)
 - `C:\Users\<username>\.wslconfig`
+
+## Kubernetes
+
+- Automation tool
+- Containerized apps
+  - Deployment
+  - Scaling
+  - Management
+- Open source by Google
+
+Benefits
+
+- Scaling up and down
+- Deployments
+- Rollbacks
+  - Easily revert back to previous versions
+- Monitoring
+  - Can kill bad pods and spool new ones up
+
+<img src="./../../images/docker_deployment.PNG">
+
+| Keyword    | Description                                                                                                                                                      |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ingress    | API object that manages external access to the services in a cluster, typically HTTP. May provide load balancing, SSL termination and name-based virtual hosting |
+| Node       | A worker machine in Kubernetes, part of a cluster. Contains containers.                                                                                          |
+| Namespaces | A mechanism for isolating groups of resources within a single cluster (keeps applications isolated) from one another.                                            |
+
+<img src="./../../images/docker_k8cluster.PNG">
