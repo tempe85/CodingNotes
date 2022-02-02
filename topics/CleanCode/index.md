@@ -72,3 +72,129 @@ Coding standards WI-2231: http://hopper2.ad.selinc.com/qsiqms/qs4reldc.nsf/a7b63
 
 - Nobody writes perfect ocde the first time
 - Create drafts
+
+## Coding Comments
+
+- If not maintained they can mislead or be lies
+- Only the code can truly tell you waht it does
+- Comment about the 'why' not the 'what' (why it's there, not what it is doing)
+
+* Best case scenario is that the code gives you all the information it needs
+
+## Error Handling
+
+- Develop a strategy as part of your software design
+- Decide how errors will be prevented, generated, handled and/or propagated
+- Be consistent
+
+### Exceptions vs Error Codes
+
+- Exceptions are generally recommended over error codes.
+- Error codes can be safer for well-reviewed, critical code
+
+- Downside of exceptions
+  - Exceptions can be likened to goto statements, creating jumps in execution
+  - Can create additional exit points in functions
+  - Can often be invisible in code
+  - Exception handling can be hard to review
+- Benefits of exceptions
+  - Cannot be ignored
+  - Can include arbitrary data (custom exception)
+  - Can make debugging easier
+  - Can be more easily delegated
+  - Error codes add complexity to a function declaration
+  - Global/class error code fields can be neglected
+
+## Defensive programming
+
+- Protect code from invalid input from 'outside'
+- Establish boundaries
+  - Trust nothing from outside the boundary
+  - Everything in the boundary is safe
+- Validate input data at the boundary
+
+## Debug Asserts vs Exceptions
+
+- Asserts are used as debugging aid to detect coding errors
+- Use them to document assumptions and verify at runtime
+
+## Third-party usage example
+
+<img src="./../../images/cleancode_thirdparty.PNG">
+
+<img src="./../../images/cleancode_thirdparty2.PNG">
+
+- More options = more complexity, by doing it the second way we only expose one part of the map third party library.
+
+## Exploring Third-Party Code
+
+- Write "learning" unit tests against third-party code to explore your understanding of the code.
+- These tests can then be run on future releases to find behavior changes
+
+## Code that doesn't exist yet
+
+- Develop against code that doesn't exist
+  - Component/subsystem developed by another team
+- Define a boundary interface you wish you had
+- Once the real code becomes available, write an adapter to bridge the gap between your interface and the real interface
+
+<img src="./../../images/cleancode_bridgegap.PNG">
+
+## Classes
+
+- Should be small
+- Single responsibility (SRP) (to a particular user of that class)
+- If we cannot have a concise name for a class, it's likely too large
+- System should be made of many small classes rather than a few large ones
+
+## Cohesion
+
+- Degree to which the elements inside a module belong together
+- High cohesion results in
+  - Modules with reduced complexity
+  - Easier to reuse
+  - Easier to maintain
+- The more instance variables a method manipulates, the more cohesive that method is to its class
+
+## Coupling
+
+- A measure of how closely connected two mothods or modules are
+- Loose coupling reduces risk that changes in one module with affect others
+- Loose coupling results in:
+  - Modules that are easier to reuse
+  - Easier to unit test
+  - Can be easily swapped out for other implementations
+
+<img src="./../../images/cleancode_coupling.PNG">
+
+## Unit Tests
+
+- No code is clean if it doesn't have tests
+- Tells you the code is functioning as you expect it to
+- Test code is as important as production code
+- Keeps code flexibile, maintainable, reusable
+- With tests, you do not fear making changes to the code
+- Without tests, every change is a potential bug
+- Tests must be kept clean
+
+## Clean Tests
+
+- Arrange-Act-Assert
+- Each test should cover a single concept
+- A clean test is easy to read
+
+<img src="./../../images/cleancode_tests.PNG">
+
+- Name convention for tests
+  - MethodName_StateUnderTest_ExpectedBehavior
+
+<img src="./../../images/cleancode_unittestexample.PNG">
+
+## Test Driven Development Steps
+
+1. Add a test
+2. Run all tests. The new test should fail for expected reasons.
+3. Write the simplest production code to make the test pass.
+4. All tests should now pass
+5. Refactor as needed, running tests after each refactor to ensure that functionality is preserved
+6. Repeat
