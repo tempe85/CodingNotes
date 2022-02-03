@@ -198,3 +198,81 @@ Coding standards WI-2231: http://hopper2.ad.selinc.com/qsiqms/qs4reldc.nsf/a7b63
 4. All tests should now pass
 5. Refactor as needed, running tests after each refactor to ensure that functionality is preserved
 6. Repeat
+
+## Design patterns
+
+- General, reusable solutions to a commonly occurring problem
+- Formalized best practices that can be used to solve common problems when designing an app or system
+
+### Four elements of Design patterns
+
+- `Pattern name` descibes a design pattern
+- The `problem` describes when to apply the pattern
+- The `solution` describes the elements that make up the design
+- The `consequences` are results of trade-offs of applying the pattern.
+
+<img src="./../../images/cleancode_adapter.PNG">
+
+<img src="./../../images/cleancode_adapterexample.PNG">
+<img src="./../../images/cleancode_observer.PNG">
+
+## Solid Design Principles
+
+- Tells us how to arround our functions and data strutures into classes and how these classes should be interconnected
+- Creation of software that is
+  - Tolerant of change
+  - Easy to understand
+
+## SRP: Single responsibility principle
+
+- A module should be responsible to only one actor
+- If a class has more than one responsibility, then responsibilities become coupled
+
+* Changes to one responsibility impairs or inhibits the class ability of another
+
+<img src="./../../images/cleancode_srpbad.PNG">
+<img src="./../../images/cleancode_srp.PNG">
+
+## OCP: Open-Closed principle
+
+- Open for extension but closed for modification
+- Open for extension
+  - Behavior of module can be extended
+- Closed for modification
+  - Source code of the module is locked
+- Abstraction is key
+
+<img src="./../../images/cleancode_ocpbad.PNG">
+
+- When you try to extend this module you will need to modify the `DrawAllShapes` method
+
+<img src="./../../images/cleancode_ocp.PNG">
+
+- Using polymorphism and inheritance to make sure that you don't need to modify any existing code when adding a new shape.
+
+## LSP: The Liskov substitution principle
+
+- Derived classes must be substituable for their base class
+
+<img src="./../../images/cleancode_lsp.PNG">
+
+- All clients (derived classes) must conform to what is expected of the clients' base class
+- In this case if a rectangle is the base class of a square then this test will fail (when you set the height to two the area will be 4 for a square, not 10)
+
+## ISP: The interface Segregation Principle
+
+- Clients should not be forced to depend on interfaces that they do not use
+
+  <img src="./../../images/cleancode_isp.PNG">
+
+* A basic printer won't use all of these methods
+
+  <img src="./../../images/cleancode_ispbetter.PNG">
+
+## Dependency Inversion Principle
+
+- Depend on abstractions
+
+  <img src="./../../images/cleancode_dip.PNG">
+
+  <img src="./../../images/cleancode_dipbetter.PNG">
