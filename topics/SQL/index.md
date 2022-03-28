@@ -144,7 +144,7 @@ END;
 USE [TableName]
 GO
 
-DECLARE @ids [context].[udtt_BigList]
+DECLARE @ids [fc].[udtt_BigIntList]
 INSERT INTO @ids VALUES (30534)
 
 DECLARE @return_value int
