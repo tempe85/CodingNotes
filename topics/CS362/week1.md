@@ -40,4 +40,13 @@ VCS
   - files that have already been added to the repo are **not staged**
   - new files are **untracked**
 - `git add <filename>` allows users to stage unstaged and untracked files
+  - `git add -u` allows you to add all non-untracked files
 - Files are added to repo when you `git commit`
+
+#### Git branches
+* A branch is an offshoot of the current state of the codebase
+* Allows a user to make chagnes to files without breaking the stable version
+* `git branch <branchname>` creates a branch
+* `git checkout <branchname>` switches to that branch
+* `git merge <branch_to_be_merged>` merges specified branch into branch currently checked out of
+* 
