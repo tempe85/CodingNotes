@@ -40,4 +40,4 @@ VCS
   - files that have already been added to the repo are **not staged**
   - new files are **untracked**
 - `git add <filename>` allows users to stage unstaged and untracked files
-- 
+- Files are added to repo when you `git commit`
