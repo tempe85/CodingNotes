@@ -26,7 +26,9 @@
 ```
 
 Using OpenMP in Linux:
-`g++ -o proj proj.cpp -lm -fopenmp`
+`g++ -o proj proj.cpp -O3 -lm -fopenmp`
+
+- Note -lm helps link the math library
 
 Using OpenMP in Visual Studio
 
