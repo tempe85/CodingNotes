@@ -190,5 +190,3 @@ Race conditions can be fixed through use of Mutual exclusion locks (Mutextes)
 6. Beware of false sharing caching issues
 
 - Performance looks like it goes down with multiple threads.
-
-test
