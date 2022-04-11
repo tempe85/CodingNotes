@@ -62,7 +62,7 @@ Example:
 * Each combination represents a sub-domain
 * This can still produce a number of combinations that isn't realistically implementable
 
-### Category Partition Method
+## CATEGORY PARTITION METHOD
 
 http://barbie.uta.edu/~mehra/7%20The%20category-partition%20method%20for%20specifying%20and%20generating%20fuctional%20tests.pdf
 
@@ -70,8 +70,26 @@ http://barbie.uta.edu/~mehra/7%20The%20category-partition%20method%20for%20speci
   https://www.youtube.com/watch?v=1x-c5d8iUhc&list=PLAwxTw4SYaPkoQFThzsc9e7Fe3QV_KJCs
 
 1. Identify independently testable features
+   - Take software spec and identify individually testable units. Identifying unit tests
 2. Identify **categories**
+   - A category is a way of describing an input.
+     - In the password example the input is a string. We can describe this with **length** and **content**, which are both _categories_ of this testable feature.
 3. **Partition** categories into choices
+   - Identify subdomains by identifying unique cases that are likely worth testing, e.g. edge cases.
+   - length
+     - 0, 7, 8 ect.
+   - content
+     - all numbers, all lowercase, all special characters, ect.
 4. Identify constraints among choices
+   - Combine subdomains/choices together.
+     - Some combinations don't make sense. No reason to test more than a single combination that is `length: 0`. Helps eliminate number of possible test cases.
 5. Produce/Evaluate test case specifications
+   - Categories' choices are combined according to the identified constraints to produce _test frames_. We take all the possible subdomains for each category and match them up with subdomaines of other categories. we then use constraints to eliminate some combinations, we are left with choice combinations (e.g. passwords of length with all numbers) which are called `test frames`.
+     - A test frame is a formal description of a test case.
+   - We need to evalute test frames by realizing that there are too many test frames to realistically implement. Re-examine constraints, choices and even categories.
+   - There are tools that can automate test frame generation
 6. Generate test cases from test case specifications
+   - Convert test frames into actual tests
+
+TSLGenerator docs:
+https://github.com/alexorso/tslgenerator/blob/master/Docs/TSLgenerator-manual.txt
