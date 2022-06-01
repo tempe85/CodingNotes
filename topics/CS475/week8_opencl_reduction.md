@@ -23,3 +23,5 @@ for(int i = 0; i < numWorkGroups; i++)
 ```
 
 ## OpenCL (compute)/OpenGL (graphics) Vertex Buffer Interoperability
+
+* OPenCL or OpenGL can use the buffer, but not both
