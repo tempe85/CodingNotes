@@ -1,10 +1,20 @@
+library("fontawesome")
+
 | Keyword                            | Definition                                                                                                                                                      |
 | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Multiplexing with physical media` | Merging multiple communication streams onto the same medium                                                                                                     |
 | `ISO`                              | Multinational dedicated to the agreement of standards worldwide                                                                                                 |
 | `OSI`                              | Model which purpose is to show how to facilitate communication between different systems without requiring changes to logic of underlying hardware and software |
 
+| Problem                                       | Link                                               |
+| --------------------------------------------- | -------------------------------------------------- |
+| Find All Possible Recipes from Given Supplies | [![Click me](./svg/Link.svg)](https://example.com) |
+
 ### Access Networks
+
+<a href="https://example.com/link/to/destination">
+  <img src="./svg/Link.svg" alt="Image Alt Text" style="background-color: white; padding: 5px; border-radius: 5px">
+</a>
 
 #### Home
 
