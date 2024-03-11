@@ -1,3 +1,5 @@
+<small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
+
 ## Network Congestion and TCP
 
 | Keyword       | Definition                                                                                            |
@@ -84,6 +86,7 @@ TCP infers network congestion by monitoring segment behavior in the Transport la
 <img src="./../../images/congestionwindow.PNG" width="650px" height="500px">
 
 <img src="./../../images/congwin.PNG">
+<small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
 
 <img src="./../../images/congwin2.PNG">
 

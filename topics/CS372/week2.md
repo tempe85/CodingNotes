@@ -1,4 +1,4 @@
-library("fontawesome")
+<small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
 
 | Keyword                            | Definition                                                                                                                                                      |
 | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -184,6 +184,7 @@ The internet stack 'missing' these layers (presentation, session layer)
 - No always on server
 - Pros: scalable and distributive
 - Cons: Difficult to manage and not secure
+  <small>[Return Home](../../README.md)</small> | <small>[Return to CS 372](index.md)</small>
 
 `Hybrid` - Central server exchanges a connection info with clients and the clients make contact directly which each other, e.g. Skype video conferencing.
 

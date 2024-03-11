@@ -52,6 +52,10 @@ Recover deleted stashes:
 ```shell
 git log --graph --oneline --decorate $( git fsck --no-reflog | %{ $_.Split(' ')[2]; } )
 ```
+
+```
+git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D
+```
 - Find the hash value for the stash you want to recover, then you can enter `git stash apply <hashvalue>`
 
 ## Commits
@@ -69,3 +73,12 @@ git log --graph --oneline --decorate $( git fsck --no-reflog | %{ $_.Split(' ')[
 
 - Run: `git reset --hard origin/{branchName}`
 - Use this when local master/develop are no longer matching the remote branch (e.g. accidental commit)
+
+<u>Reset a repo (with deleting repo or removing stashes)</u>
+
+- Run: `git reset --hard` and then `git clean -dxf`
+- Use this when you want to reset a repo to a clean state.
+
+<u>Pull and merge a different branch into your current branch</u>
+
+- Run: `git pull origin <branchToMerge>`

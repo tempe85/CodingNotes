@@ -49,6 +49,7 @@
 - [CS290 Web Design](topics/CS290/index.md)
 - [CS340 Databases](topics/CS340/index.md)
 - [CS361 Software Engineering I](topics/CS361/index.md)
+- [CS372 Intro To Networking](topics/CS372/index.md)
 
 ### IDEs
 
@@ -57,6 +58,7 @@
 ### Misc
 
 - [Tips and tricks](topics/TipsAndTricks/index.md)
+- [Clean Code](topics/CleanCode/index.md)
 
 ### Regex
 
