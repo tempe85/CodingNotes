@@ -48,6 +48,10 @@ Delete merged branches:
 ```shell
 git branch --merged | %{$_.trim()}  | ?{$_ -notmatch 'develop' -and $_ -notmatch 'master'} | %{git branch -d $_}
 ```
+
+Delete local branches that have no remote branch equivalent:
+`git fetch --prune`
+
 Recover deleted stashes:
 ```shell
 git log --graph --oneline --decorate $( git fsck --no-reflog | %{ $_.Split(' ')[2]; } )
