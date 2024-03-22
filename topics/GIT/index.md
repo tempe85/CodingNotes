@@ -74,6 +74,12 @@ git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D
 - Run: `git reset --hard origin/{branchName}`
 - Use this when local master/develop are no longer matching the remote branch (e.g. accidental commit)
 
+<u>Set a file to ignore changes</u>
+`git update-index --assume-unchanged src/App/config.ts`
+
+To turn this off:
+``git update-index --no-assume-unchanged src/App/config.ts`
+
 <u>Reset a repo (with deleting repo or removing stashes)</u>
 
 - Run: `git reset --hard` and then `git clean -dxf`
