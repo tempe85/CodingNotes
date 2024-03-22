@@ -78,7 +78,7 @@ git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D
 `git update-index --assume-unchanged src/App/config.ts`
 
 To turn this off:
-``git update-index --no-assume-unchanged src/App/config.ts`
+`git update-index --no-assume-unchanged src/App/config.ts`
 
 <u>Reset a repo (with deleting repo or removing stashes)</u>
 
