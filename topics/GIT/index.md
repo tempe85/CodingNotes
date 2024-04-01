@@ -92,3 +92,8 @@ To turn this off:
 <u>Pull and merge a different branch into your current branch</u>
 
 - Run: `git pull origin <branchToMerge>`
+
+<u>Revert change to a single file</u>
+
+- Run: `git checkout [commit ID] -- path/to/file`
+- The commit Id should be the commit when it was previously updated
