@@ -48,9 +48,17 @@ Delete merged branches:
 ```shell
 git branch --merged | %{$_.trim()}  | ?{$_ -notmatch 'develop' -and $_ -notmatch 'master'} | %{git branch -d $_}
 ```
+
+Delete local branches that have no remote branch equivalent:
+`git fetch --prune`
+
 Recover deleted stashes:
 ```shell
 git log --graph --oneline --decorate $( git fsck --no-reflog | %{ $_.Split(' ')[2]; } )
+```
+
+```
+git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D
 ```
 - Find the hash value for the stash you want to recover, then you can enter `git stash apply <hashvalue>`
 
@@ -70,6 +78,22 @@ git log --graph --oneline --decorate $( git fsck --no-reflog | %{ $_.Split(' ')[
 - Run: `git reset --hard origin/{branchName}`
 - Use this when local master/develop are no longer matching the remote branch (e.g. accidental commit)
 
+<u>Set a file to ignore changes</u>
+`git update-index --assume-unchanged src/App/config.ts`
+
+To turn this off:
+`git update-index --no-assume-unchanged src/App/config.ts`
+
+<u>Reset a repo (with deleting repo or removing stashes)</u>
+
+- Run: `git reset --hard` and then `git clean -dxf`
+- Use this when you want to reset a repo to a clean state.
+
 <u>Pull and merge a different branch into your current branch</u>
 
 - Run: `git pull origin <branchToMerge>`
+
+<u>Revert change to a single file</u>
+
+- Run: `git checkout [commit ID] -- path/to/file`
+- The commit Id should be the commit when it was previously updated

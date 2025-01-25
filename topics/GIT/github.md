@@ -3,8 +3,8 @@
 # GITHUB
 
 Important Links:
-- [Github Handbook](https://guides.github.com/introduction/git-handbook/)
 
+- [Github Handbook](https://guides.github.com/introduction/git-handbook/)
 
 Deletes all branches merged with master/develop:
 
@@ -26,6 +26,26 @@ git branch --merged | %{$_.trim()}  | ?{$_ -notmatch 'develop' -and $_ -notmatch
 - Add the files in your new local repository. This stages them for the first commit.
 
 `git add .`
+
+```javascript
+const express = require("express");
+const cors = require("cors");
+const app = express();
+const port = "3030";
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+require("./config/mongoose.config");
+
+app.listen(port, () => console.log(`Listening on port: 3030`));
+```
 
 or:
 
