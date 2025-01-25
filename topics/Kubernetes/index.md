@@ -21,3 +21,6 @@ What does it offer?
 ## Helm Charts
 
 - Kubernetes Package manager
+
+Udemy courses:
+[Kubernetes for Absolute Beginners](../Kubernetes/KubernetesForAbsoluteBeginners/index.md)
