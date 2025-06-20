@@ -1,0 +1,11 @@
+apiVersion: v1 # Version of the Kubernetes API
+kind: Pod # Type of object we are trying to create
+metadata:
+  name: myapp-pod #pod name
+  labels: # can have any key-value pairs that you want for labels
+    app: myapp # will be able to filter label of pods
+    type: front-end
+spec: #specification
+  containers:
+    - name: nginx-container
+      image: nginx #Name of the docker image in the docker repository

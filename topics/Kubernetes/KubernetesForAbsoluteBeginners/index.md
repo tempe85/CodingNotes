@@ -122,6 +122,8 @@ Minikube status: `minikube status`
 
 Creating a pod: `kubectl run nginx --image=nginx`
 
+Deleting a pod: `kubectl delete pod <podname>`
+
 - Example creates an nginx pod. Pulls from docker images
 
 Create a deploying using imperative command: `kubectl create deployment nginx --image=nginx`
@@ -133,3 +135,47 @@ Get additional pod information: `kubectl get pods -o wide`
 - Gives information on what node the pod is running
 - Gives IP address info (internal IP in the kubernetes cluster)
 
+## Controllers
+
+<img src="./../../../images/kubernetes_beginner_controller.png">
+
+- Even if you have a single pod you can use a single pod
+
+  - Will bring up a new pod if the single pod fails
+
+- Used for load balancing and scaling
+  - When the number of users increases it can deploy additional pods
+  - Controller spans accross multiple nodes
+
+`Replication controller` is being replaced by `Replica Set`
+
+- Both of these technologies use load balancing and scaling
+
+- We need to create a kubernetes definition file for a controller
+
+```yaml
+apiVerion: v1
+kind: ReplicationController
+metadata:
+  name: myapp-rc
+  labels:
+    app: myapp
+    type: front-end
+spec: # replication controller
+  template: # Pod template
+    metadata:
+      name: myapp-pod #pod name
+      labels: # can have any key-value pairs that you want for labels
+        app: myapp # will be able to filter label of pods
+        type: front-end
+      spec: #specification
+        containers:
+          - name: nginx-container
+            image: nginx #Name of the docker image in the docker repository
+
+  replicas: 3
+```
+
+To run this use: `kubectl create -f rc-definition.yml`
+
+To view the replication controllers: `kubectl get replicationcontroller`
