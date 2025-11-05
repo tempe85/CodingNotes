@@ -160,3 +160,6 @@ GO
 
 - This allows you to run a store proc that requires you to pass through a table type variable as a param.
 - You can also use this to do a join on a non-store proc query
+
+<u>View current transactions</u>
+- SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
