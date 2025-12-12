@@ -1,4 +1,6 @@
-# Kubernetes (K8s)
+<small>[Return Home](../../../README.md)</small> | <small>[Return to Kubernetes](../index.md)</small>
+
+# Kubernetes for Absolute Beginners
 
 `Container`
 
@@ -76,7 +78,36 @@ Master node
 
 `kubectl cluster-info`
 
-`kubectl get nodes`
+`kubectl get <entity>`
+
+- nodes, pods, replicasets
+- Will give you info about the quantity of desired, current and ready entities
+
+`kubectl describe <entity>`
+
+- e.g. replicasets
+- Will give you information about wht image was used to create a pod in a replicaset
+
+`kubectl delete <entity> <entityname>`
+
+- e.g. `kubectl delete pod pod-name`
+
+#### Create a pod
+
+`kubectl run nginx-pod --image=nginx`
+
+### Editing a pod
+
+- Extract pod definition to a file
+  `kubectl get pod <pod-name> -o yaml > pod-definition.yaml`
+- Edit an existing pod
+  `kubectl edit pod <pod-name>`
+  - Note, only certain properties of the pod are editable
+    - spec.container(s).image
+    - spec.initContainer(s).image
+    - spec.activeDeadliensSeconds
+    - spec.toleration
+    - spec.terminationGracePeriodSeconds
 
 ### docker vs containerD
 
@@ -122,7 +153,11 @@ Minikube status: `minikube status`
 
 Creating a pod: `kubectl run nginx --image=nginx`
 
+Create a replicaset using a file: `kubectl create -f /root/replicaset-definition-1.yaml`
+
 Deleting a pod: `kubectl delete pod <podname>`
+
+- Deleting all pods in a namespace: `kubectl delete pods --all -n <namespace>`
 
 - Example creates an nginx pod. Pulls from docker images
 
@@ -179,3 +214,68 @@ spec: # replication controller
 To run this use: `kubectl create -f rc-definition.yml`
 
 To view the replication controllers: `kubectl get replicationcontroller`
+
+Unlike replica controllers, replica sets can monitor existing pods if they are already created. If they are not created, the replica set will create one. It will monitor the pods and create new ones if pods fail.
+
+Scale of replica set:
+
+- Update the replicas field to 6 then run `kubectl replace -f fileName.yml`
+
+## Kubernetes Deployments
+
+<img src="./../../../images/kubernetes_beginner_deployments.png">
+
+`kubectl get all`
+
+- Will show deployments, replica-sets and pods
+
+Create deployments command:
+`kubectl create deployment httpd-frontend --image=httpd:2.4-alpine --replicas=3`
+
+- Deployment strategy
+  - Recreate: Takes down all pods and then brings them all back up
+  - RollinUpdate: Take down pod and bring up the new version 1 by 1
+    - Default deployment strategy
+
+### Rollout status
+
+`kubectl rollout status deployment/myapp-deployment`
+
+- Rollout history
+  `kubectl rollout history deployment/myapp-deployment`
+  - To save history when you create a deployment use `--record` in the command line
+
+### Update deployment
+
+`kubectl apply -f deployment-definition.yml`
+`kubectl set image deployment/<deployment-name> <container-name>=<new-image>`
+
+### Rollback
+
+`kubectl rollout undo deployment myapp-deployment`
+
+## Networking
+
+- IP address is assigned to a Pod
+  <img src="./../../../images/kubernetes_beginner_networking.png">
+
+  <img src="./../../../images/kubernetes_beginner_networking2.png">
+
+## Services
+
+  <img src="./../../../images/kubernetes_beginner_services.png">
+
+### Node port service
+
+- Listens to a port on the node and forwards it to the pod
+  <img src="./../../../images/kubernetes_beginner_service_node-port.png">
+
+### ClusterIP
+
+- Creates a virtual IP on the cluster
+
+### LoadBalancer
+
+- Helps distrubute load
+
+## Microservices

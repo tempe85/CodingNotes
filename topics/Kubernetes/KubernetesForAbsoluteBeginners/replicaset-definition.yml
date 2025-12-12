@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+    type: front-end
+spec: # replication controller
+  template: # Pod template
+    metadata:
+      name: myapp-pod #pod name
+      labels: # can have any key-value pairs that you want for labels
+        app: myapp # will be able to filter label of pods
+        type: front-end
+    spec: #specification
+      containers:
+        - name: nginx-container
+          image: nginx #Name of the docker image in the docker repository
+  replicas: 3 # number of pods to run
+  selector: # label selector
+    matchLabels:
+      type: front-end # label to match for the pods

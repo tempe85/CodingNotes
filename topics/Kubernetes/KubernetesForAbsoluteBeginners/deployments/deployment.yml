@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  labels:
+    tier: frontend
+    app: nginx
+spec: # replication controller
+  template: # Pod template
+    metadata:
+      name: myapp-pod #pod name
+      labels: # can have any key-value pairs that you want for labels
+        tier: frontend # will be able to filter label of pods
+        app: nginx
+    spec: #specification
+      containers:
+        - name: nginx-container
+          image: nginx #Name of the docker image in the docker repository
+  replicas: 3 # number of pods to run
+  selector: # label selector
+    matchLabels:
+      app: nginx # label to match for the pods

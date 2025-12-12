@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80 # Port on service object
+      targetPort: 80 # Port where the backend is exposed
+  selector:
+    app: myapp # label to match for the pods
+    type: front-end 

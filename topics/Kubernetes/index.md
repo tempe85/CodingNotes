@@ -23,4 +23,7 @@ What does it offer?
 - Kubernetes Package manager
 
 Udemy courses:
-[Kubernetes for Absolute Beginners](../Kubernetes/KubernetesForAbsoluteBeginners/index.md)
+
+- [Kubernetes for Absolute Beginners](../Kubernetes/KubernetesForAbsoluteBeginners/index.md)
+
+- [Kubernetes Certified Application Developer](../Kubernetes/KubernetesCertifiedApplicationDeveloper/index.md)
