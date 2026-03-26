@@ -278,4 +278,3 @@ Create deployments command:
 
 - Helps distrubute load
 
-## Microservices

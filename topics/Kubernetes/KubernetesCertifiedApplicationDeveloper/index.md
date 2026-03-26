@@ -102,14 +102,13 @@ spec:
 - `kube-public` resources available to usares are created at setup
 
 - Can create a namespace for dev/prod environment (for example)
-
   - Can setup rules for how each namespace uses resources
 
   <img src="./../../../images/kubernetes_certification_master-namespaces.png">
 
 When you want to see the pods in the non-default namespace you need ot use the `--namesapce=<namespace-name>` tag e.g. `kubectl get pods --namespace=kube-system`
 
-To create a pod in a different namespace add the namespace tag in create command. E.g. `kubectl creat -f pod-definition.yml --namespace=dev`, it can also be added to the pod definition file under metaData
+To create a pod in a different namespace add the namespace tag in create command. E.g. `kubectl create -f pod-definition.yml --namespace=dev`, it can also be added to the pod definition file under metaData
 
 ```yml
 ---
@@ -274,11 +273,11 @@ APP_COLOR: blue
 APP_MODE: prod
 ```
 
-`kubectl create configmap <config-name> \ --from-literal=<key>=<value>`
+`kubectl create configmap <config-name> --from-literal=<key>=<value>`
 
-Example: `kubectl create configmap app-config \ --from-literal=APP_COLOR=blue | --from-literal=APP_MOD=prod`
+Example: `kubectl create configmap app-config --from-literal=APP_COLOR=blue --from-literal=APP_MOD=prod`
 
-`kubectl create configmap app-config \ --from-file=app_config.properties`
+`kubectl create configmap app-config --from-file=app_config.properties`
 
 ```yaml
 apiVerions: v1
@@ -294,3 +293,570 @@ Then run `kubectl create -f config-map.yaml`
 To see what configmaps exist use `kubectl get configmaps`
 
 - Can also use describe like normal
+
+## SECRETS
+
+- Imperative
+
+`kubectl create secret generic <secret-name> --from-literal=<key>=<value>`
+
+Example:
+`kubectl create secret generic app-secret --from-literal=DB_Host=mysql`
+
+`kubectl create secret generic <secret-nam> --from-file=<path-to-file>`
+
+`kubectl describe secret <secret-name>`
+
+- Declarative
+  - Use secret definition file
+
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: app-secret
+  data:
+    DB_Host: msql
+    DB_User: root
+    DB_Password: paswrd
+  ```
+
+  - You must store the data in an encoded format
+
+Example:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+data:
+  DB_Host: bXlzcWw=
+  DB_User: cm9vdA==
+  DB_Password: cGFzd3Jk
+```
+
+How to encode:
+`echo -n 'msql' | base64`
+
+How to decode:
+
+`echo -n 'cm9vdA==' | base64 --decode`
+
+to get the secrets with the hash values:
+`kubectl get secret app-secret -o yaml`
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-webapp-color
+  labels:
+    name: simple-wabapp-color
+spec:
+  containers:
+    - name: simple-webapp-color
+      image: simple-webapp-color
+      command: ["sleep", "5000"]
+      ports:
+        -containerPort: 8080
+      env:
+        - name: DB_Password
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: DB_Password
+      envFrom:
+        - secretRef:
+            name: app-secret # Name of the secret
+```
+
+## Security Contexts
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-pod
+spec:
+  securityContext:
+    runAsUser: 1001
+  containers:
+    - image: ubuntu
+      name: web
+      command: ["sleep", "5000"]
+      securityContext:
+        runAsUser: 1002
+
+    - image: ubuntu
+      name: sidecar
+      command: ["sleep", "5000"]
+```
+
+## Taints and Tolerations
+
+- Taints and tolerations are made to set restrictions on what pods can be scheduled on a node
+  - Tolerations are set on nodes
+  - Taints are set on pods
+
+  <img src="./../../../images/kubernetes_certification_taints_and_tolerations.png">
+
+- Pod D is tolerant to the taint (blue) on Node 1
+
+Tainting a node:
+
+`kubectl taint nodes node-name key=value:taint-effect`
+
+- Types of taints
+  - NoSchedule
+    - Pod will not be scheduled on the node
+  - PreferNoSchedule
+    - System will try to avoid placing the pod on the node
+  - NoExecute
+    - No pods will be scheduled on the node and existing pods on the node (if any) will be evicted if they do not tolerate the taint
+
+Tolerations
+
+Taint: e.g. `kubectl taint nodes node1 app=blue:NoSchedule`
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  spec:
+    containers:
+      - name: nginx-container
+        image: nginx
+    tolerations:
+      - key: app
+        operator: "Equal"
+        value: blue
+        effect: NoSchedule
+```
+
+To see the taint for a node:
+`kubectl describe node <node-name> | grep Taint`
+
+## Node Selectors
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+spec:
+  containers:
+    - image: data-processor
+      name: data-processor
+  nodeSelector:
+    size: Large
+```
+
+How to label nodes: `kubectl label nodes <node-name> <label-key>=<label-value>`
+
+e.g. `kubectl label nodes node-1 size=Large`
+
+Node selector limitations:
+
+- Can't do Large or Medium (or statement)
+- Can't do not small (not statement)
+
+## Node Affinity
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+spec:
+  containers:
+    - image: data-processor
+      name: data-processor
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: size
+                operator: In
+                values:
+                  - Large
+                  - Medium
+```
+
+- Node can be placed in large or medium node
+
+```yaml
+- matchExpressions:
+    - key: size
+      operator: Exists
+```
+
+The type of node affinity defines the behavior of scheduling with respect to affinity and the lifecycle of the pod
+
+Affinity Types:
+
+- requiredDuringSchedulingIgnoredDuringExecution
+  - During scheduling the affinity is required
+    - If a matching node doesn't exist, the pod will not be scheduled
+- preferredDuringSchedulingIgnoredDuringExecution
+  - During scheduing, if no matching node exists then place it anywhere
+    - If a matching node does exist, the pod will be scheduled on that node
+
+Planned afinity: requiredDuringSchedulingRequiredDuringExecution
+
+To see which nodes your pods are running on `k get pods -o wide`
+
+## Multi-Container Pods
+
+- When you need two services to work together
+  - Main App + Web server
+  - Share the same lifecycle
+  - Same network (localhost)
+  - Storage sharing
+
+- Pod definition file, add another container to the container array
+
+Types:
+
+- Co-located containers
+  - No guarantee one container starts before the other (no order of startup)
+
+```yaml
+spec:
+  containers:
+    - image: data-processor
+      name: data-processor
+    - image: web-app
+      name: web-app
+      ports:
+        - containerPort: 8080
+```
+
+- Init containers
+  - Initialization steps to be performed before main application can be run and stops running
+
+```yaml
+spec:
+  containers:
+    - image: web-app
+      name: web-app
+      ports:
+        - containerPort: 8080
+  initContainers:
+    - name: db-checker
+      image: busybox
+      command: 'wait-for-db-to-start.sh'
+    - name: api-checker
+      name: busybox
+      command: 'wait-for-another-api.sh'
+```
+
+- Side car container
+  - Starts before main app starts, continues to run when main app starts, and ends after main app stops.
+
+```yaml
+spec:
+  containers:
+    - image: web-app
+      name: web-app
+      ports:
+        - containerPort: 8080
+  initContainers:
+    - name: db-checker
+      image: busybox
+      command: "wait-for-db-to-start.sh"
+      restartPolicy: Always
+```
+
+## Observability
+
+- Lifecycle
+  - Status -> Where the pod is in it's lifecycle
+    - Pending
+    - ContainerCreating (after pod is scheduled)
+    - Running
+  - Conditions
+    - PodScheduled
+    - Initialized
+    - ContainersReady
+    - Ready
+
+### Readiness Probes
+
+- /api/ready
+  - Run an http test
+- tcp test 3306
+- custom script
+
+```yaml
+spec:
+  containers:
+    - image: web-app
+      name: web-app
+      ports:
+        - containerPort: 8080
+    readinessProbe:
+      httpGet:
+        path: /api/ready
+        port: 8080
+      initialDelaySeconds: 10
+      periodSeconds: 5
+      failureThreshold: 8
+```
+
+- Service will not be moved into a ready state until the test on the api is successful
+- `initialDelaySeconds` is an optional field that will delay the prob until the specified wait time
+- `periodSeconds` is an optional field that will set the probe cadence
+- `failureThreshold` is an optional field that will set the number of attempts a prob can fail before the prob will stop. The default threshold is 3.
+
+TCP
+
+```yaml
+readinessProbe:
+  tcpSocket:
+    port: 3306
+```
+
+Exec
+
+```yaml
+readinessProbe:
+  command:
+    - cat
+    - /app/is_ready
+```
+
+### Liveness probes
+
+- Similar to readiness probes
+- If a pod crashes kubernetes will automatically try to restart the container. But what if the application is 'live' but stuck in an infinite loop? The app would still be assumed to be up.
+
+```yaml
+livenessProbe:
+  httpGet:
+    path: /api/healthy
+    port: 8080
+
+  tcpSocket:
+    port: 3306
+
+  livenessProbe:
+    exec:
+      command:
+        - cat
+        - /app/is_healthy
+```
+
+## Logging
+
+`kubectl logs -f <pod-name>`
+
+If there are multiple containers in the pod then you need to specify the container name
+
+`kubectl logs -f <pod-name> <container-name>`
+
+## Labels, Selectors and Annotations
+
+Selectors
+
+```yaml
+apiVersion: v1
+kind: Pod
+metaData:
+  name: simple-webapp
+  labels:
+    app: App1
+    Function: Front-end
+```
+
+`kubectl get pods --selector app=App1`
+
+ReplicaSet
+
+```yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metaData:
+  name: simple-webapp
+  labels:
+    app: App1
+    Function: Front-end
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: App1
+  template:
+    metadata:
+      labels:
+        app: App1
+        function: Front-end
+    spec:
+      containers:
+        - name: simple-webapp
+          image: simple-webapp
+```
+
+Annotations
+
+```yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metaData:
+  name: simple-webapp
+  labels:
+    app: App1
+    Function: Front-end
+annotations:
+  buildversion: 1.34
+```
+
+## Selectors
+
+Select all pods with certain labels - `kubectl get pods -l bu=finance,env=prod,tier=frontend`
+
+- `--selector` also works instead of `-l`
+  Get all pods, replicasets, deployments ect with label - `kubectl get all -A -l env=prod`
+  Show labels for pods - `kubectl get pods --show-labels`
+
+Count the number of pods match a selector - `kubectl get pods --selector bu=finance --no-headers | wc -l`
+
+## Deployment Updates and Rollbacks
+
+- Rollout creates a new replica-set. Creates a deployment revision.
+- Allows you to revert to a previous deployment revision
+- Deployment strategies
+  - `Recreate`
+    - Destroys all pods and brings all pods up afterwards. This will cause the application to be down temporarily
+  - `Rolling update`
+    - Brings down one pod and brings up a newer version of the pod one at a time. This is the default deployment strategy.
+
+Undo a change - `kubectl rollout undo demployment myapp-deployment`
+
+Create deployment - `kubectl create deployment nginx --image=nginx:1.16`
+
+Check deployment status - `kubectl rollout status deployment nginx`
+
+Check deployment history - `kubectl rollout history deployment nginx`
+
+Use the revision flag to check the rollout history for that revision - `kubectl rollout history deployment nginx --revision=1`
+
+Update image of a deployment - `kubectl set image deployment/<deployment-name> <container-name>=<new-image>:<new-tag>`
+
+### Deployment strategy (Blue/Green)
+
+- Deployment strategy where we have the old and new version deployed.
+  - All traffic is run on old version.
+  - Once all tests are passed then all traffic is moved to new version
+  - Change label on service selector to new version when you are ready to use the new pods
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    version: v2 #Moved from v1
+```
+
+### Deployment strategy (Canary)
+
+- Deploy new version and route only a small % of traffic to it.
+- Run tests and then, when all tests passed, route all traffic to the new version
+
+  <img src="./../../../images/kubernetes_certification_deployment_strategy_canary.png">
+
+- Limited control over the split of traffic between the two deployments
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: front-end
+
+    ---
+
+# Deployment 1
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        version: v1
+        app: front-end
+
+    ---
+
+# Deployment 2
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        version: v2
+        app: front-end
+
+    ---
+
+```
+
+- One way to make sure only a certain % of traffic is going to the new deployment is to scale the deployment up or down. For example if you have v1 and v2 and 4 nodes running in v1, then to route 20% traffic to v2 you would need to have 1 node running for v2.
+
+To scale: `kubectl scale deployment/<deployment-name> --replicas=<number>`
+
+## Jobs
+
+- Set restart policy to Never
+
+job-definition.yaml
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: math-add-job
+spec:
+  completions: 3 # Number of times you should create a pod that ends in a completed status
+  parallelism: 3 # By default pods are created sequentially. This makes it so all 3 pods are created all at once
+  template:
+    spec:
+      containers:
+        - name: math-add
+          image: ubuntu
+          command: ["expr", "3", "+", "2"]
+      restartPolicy: Never
+```
+
+To see pod output: `kubectl logs <pod-name>`
+
+### CronJobs
+
+- A job that can be scheduled
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: math-add-job
+spec: # Cron job spec
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec: # Job spec
+      completions: 3
+      parallelism: 3
+      template:
+        spec: #Pod spec
+          containers:
+            - name: math-add
+              image: ubuntu
+              command: ["expr", "3", "+", "2"]
+          restartPolicy: Never
+```
+
+  <img src="./../../../images/kubernetes_certification_cronJob.png">
