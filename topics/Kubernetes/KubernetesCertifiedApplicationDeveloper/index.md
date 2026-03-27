@@ -889,16 +889,33 @@ spec:
       role: db
   policyTypes:
   - Ingress
+  - Egress
   ingress:
   - from:
     - podSelector:
         matchLabels:
           name: api-pod
+      namespaceSelector:
+        matchLabels:
+          kubernetes.io/medatdata.name: prod # Limits what namespace traffic is allowed to reach the pod
+    - ipBlock:
+      cidr: 192.168.5.10/32 #Specify a range of IP addresses that can access the pod.
     ports:
     - protocol: TCP
-      port: 3306
+      port: 3306 # What port traffic is allowed to go to
+  egress:
+  - to:
+    - ipBlock:
+      cidr: 192.168.5.10/32
+    ports:
+    - protocol: TCP
+      port: 80
 
 ```
+- If you only have the namespace selector, then all pods in that namespace can connect to the pod but no pods outside of the namespace can.
+- Each from rule are individual rules. In this case, the `podSelector` and `ipBlock` are rules. You can think of this like an OR rule. Within the `podSelector` rule there are two rules, `podSelector` and `namespaceSelector`. These act like AND rules within this rule. 
+
+
 
 Pod:
 ```yaml
