@@ -860,3 +860,48 @@ spec: # Cron job spec
 ```
 
   <img src="./../../../images/kubernetes_certification_cronJob.png">
+
+## Network Policies
+
+- Ingress
+  - Incoming traffic from users
+- Egress
+  - Outgoing request to app server
+- Direction in which the traffic originated (In/Out)
+
+### Network security
+- Each node, service and pod has an IP address
+- Pods should be able to communicate with each other accross nodes without configuration
+- All-allow rule
+- Services allow communication between pods (expose ports for the pods)
+- Can implement a network policy to limit traffic between pods
+  - A policy can be something like "Only allow ingress traffic from API Pod on Port 3306"
+
+Network policy:
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          name: api-pod
+    ports:
+    - protocol: TCP
+      port: 3306
+
+```
+
+Pod:
+```yaml
+labels:
+  role: db
+```
